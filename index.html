@@ -1,144 +1,556 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Zennora | AI Receptionist for Dental Clinics</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zennora | AI Receptionist for Dental Clinics</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+background:#f8fafc;
+color:#111827;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 8%;
+background:white;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#2563eb;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#374151;
+}
+
+
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:90px 8%;
+gap:50px;
+}
+
+
+.hero-text{
+max-width:600px;
+}
+
+
+h1{
+font-size:55px;
+line-height:1.1;
+}
+
+.hero p{
+font-size:20px;
+color:#4b5563;
+margin:25px 0;
+}
+
+
+button{
+background:#2563eb;
+color:white;
+border:none;
+padding:15px 35px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+
+.ai-card{
+background:white;
+padding:35px;
+border-radius:25px;
+width:330px;
+box-shadow:0 20px 50px rgba(0,0,0,0.1);
+}
+
+
+.bot{
+font-size:50px;
+text-align:center;
+}
+
+
+.message{
+background:#f1f5f9;
+padding:12px;
+border-radius:15px;
+margin-top:15px;
+}
+
+
+section{
+padding:80px 8%;
+text-align:center;
+}
+
+
+section h2{
+font-size:38px;
+margin-bottom:20px;
+}
+
+
+.cards{
+display:flex;
+justify-content:center;
+gap:25px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+
+.card{
+background:white;
+width:320px;
+padding:35px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+
+.card h3{
+font-size:22px;
+}
+
+
+.card h2{
+color:#2563eb;
+margin:20px 0;
+}
+
+
+.card p{
+color:#4b5563;
+line-height:1.8;
+}
+
+
+
+.price{
+background:white;
+max-width:450px;
+margin:auto;
+padding:45px;
+border-radius:25px;
+box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+
+.price h1{
+color:#2563eb;
+font-size:45px;
+margin:20px;
+}
+
+
+footer{
+background:#111827;
+color:white;
+padding:30px;
+text-align:center;
+}
+
+
+
+@media(max-width:800px){
+
+.hero{
+flex-direction:column;
+text-align:center;
+}
+
+h1{
+font-size:40px;
+}
+
+nav{
+display:none;
+}
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
+
 <header>
-    <div class="logo">Zennora</div>
-    <nav>
-        <a href="#features">Features</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#contact">Contact</a>
-    </nav>
+
+<div class="logo">
+Zennora
+</div>
+
+
+<nav>
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</nav>
+
 </header>
+
 
 
 <section class="hero">
 
+
 <div class="hero-text">
+
 <h1>
 Your Dental Clinic's
-<br>
 AI Receptionist
 </h1>
 
+
 <p>
-Answer patient questions instantly, capture leads, 
+Answer patient questions instantly, capture new leads,
 and help your clinic stay available 24/7.
 </p>
+
 
 <button>
 Book a Demo
 </button>
 
+
 </div>
+
 
 
 <div class="ai-card">
 
-<div class="bot-circle">
+<div class="bot">
 🤖
 </div>
 
-<h3>Zennora AI</h3>
+
+<h3>
+Zennora AI Assistant
+</h3>
+
 
 <div class="message">
-"Hi! How can I help you today?"
+Hi 👋 How can I help you today?
 </div>
+
 
 <div class="message">
-"I want to book a dental appointment."
+I want to know about dental implants.
 </div>
 
+
 </div>
+
 
 </section>
+
+
 
 
 <section id="features">
 
-<h2>Why Dental Clinics Choose Zennora</h2>
+
+<h2>
+Why Dental Clinics Choose Zennora
+</h2>
+
 
 <div class="cards">
 
+
 <div class="card">
-<h3>24/7 Patient Support</h3>
+
+<h3>
+24/7 Patient Support
+</h3>
+
 <p>
-Answer common questions even when your clinic is closed.
+Answer common patient questions even when your clinic is closed.
 </p>
+
 </div>
 
 
+
 <div class="card">
-<h3>More Appointments</h3>
+
+<h3>
+More Appointment Opportunities
+</h3>
+
 <p>
 Convert website visitors into potential patients.
 </p>
+
 </div>
+
 
 
 <div class="card">
-<h3>Save Reception Time</h3>
+
+<h3>
+Save Reception Time
+</h3>
+
 <p>
-Reduce repetitive phone calls and questions.
+Reduce repetitive calls and allow your team to focus on patients.
 </p>
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
+
+
+
+
+
+<section>
+
+
+<h2>
+Website vs AI Receptionist
+</h2>
+
+
+<p>
+A website brings visitors. Zennora helps convert visitors into conversations and appointments.
+</p>
+
+
+
+<div class="cards">
+
+
+<div class="card">
+
+<h3>
+Website Maintenance
+</h3>
+
+<h2>
+$100-$300/mo
+</h2>
+
+<p>
+✔ Hosting<br>
+✔ Security updates<br>
+✔ Backups<br>
+✔ Website changes
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Zennora AI Receptionist
+</h3>
+
+<h2>
+$299-$599/mo
+</h2>
+
+<p>
+✔ Patient questions<br>
+✔ Service information<br>
+✔ Lead capture<br>
+✔ Appointment guidance
+</p>
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Complete Solution
+</h3>
+
+<h2>
+$699+/mo
+</h2>
+
+<p>
+✔ Website support<br>
+✔ AI management<br>
+✔ Monthly improvements<br>
+✔ Analytics
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
 
 
 
 <section id="pricing">
 
-<h2>Simple Pricing</h2>
 
-<div class="price-card">
+<h2>
+Simple Pricing
+</h2>
 
-<h3>Dental AI Assistant</h3>
 
-<h1>$499/month</h1>
+<div class="price">
+
+
+<h3>
+AI Dental Receptionist
+</h3>
+
+
+<h1>
+$399/month
+</h1>
+
 
 <p>
-✔ Website chatbot<br>
-✔ Clinic FAQ training<br>
-✔ Patient inquiries<br>
-✔ Monthly improvements
+
+✔ Custom clinic knowledge base<br>
+✔ Website chatbot integration<br>
+✔ Patient FAQ automation<br>
+✔ Monthly optimization
+
 </p>
+
+
+<br>
 
 <button>
 Start Demo
 </button>
 
+
 </div>
+
 
 </section>
 
 
+
+
+
+
 <section id="contact">
 
-<h2>Ready to Try Zennora?</h2>
+
+<h2>
+Ready to Upgrade Your Dental Website?
+</h2>
+
 
 <p>
-See how AI can help your dental clinic.
+Let patients get answers instantly with Zennora AI.
 </p>
+
+
+<br>
+
 
 <button>
 Request Demo
 </button>
 
+
 </section>
 
 
+
+
+
 <footer>
+
 © 2026 Zennora. All rights reserved.
+
 </footer>
+
+
+
+
+
+<!-- Voiceflow Chatbot -->
+
+<script type="text/javascript">
+
+(function(d, t) {
+
+var v = d.createElement(t), 
+s = d.getElementsByTagName(t)[0];
+
+v.onload = function() {
+
+window.voiceflow.chat.load({
+
+verify: { 
+projectID: '6a5e5220ff0e0c39c847f63b' 
+},
+
+url: 'https://general-runtime.voiceflow.com',
+
+voice: {
+
+url: "https://runtime-api.voiceflow.com"
+
+}
+
+});
+
+}
+
+v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+
+v.type = "text/javascript";
+
+s.parentNode.insertBefore(v, s);
+
+
+})(document, 'script');
+
+</script>
+
 
 
 <!-- Voiceflow AI Chatbot -->
