@@ -2,193 +2,762 @@
 <html lang="en">
 
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Zennora | AI Receptionist for Dental Clinics</title>
 
+<meta name="description" content="Zennora provides AI receptionists for dental clinics to answer patient questions, capture leads and improve appointment bookings.">
+
 <style>
+
+/* ---------- GLOBAL ---------- */
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+font-family:
+"Inter",
+"Segoe UI",
+Arial,
+sans-serif;
 }
+
+
+html{
+scroll-behavior:smooth;
+}
+
 
 body{
-background:#f8fafc;
+background:#f8fbff;
 color:#111827;
+line-height:1.6;
 }
 
-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 8%;
-background:white;
-}
 
-.logo{
-font-size:30px;
-font-weight:700;
+span{
 color:#2563eb;
-}
-
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:#374151;
-}
-
-
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
-padding:90px 8%;
-gap:50px;
-}
-
-
-.hero-text{
-max-width:600px;
-}
-
-
-h1{
-font-size:55px;
-line-height:1.1;
-}
-
-.hero p{
-font-size:20px;
-color:#4b5563;
-margin:25px 0;
 }
 
 
 button{
+border:none;
+cursor:pointer;
 background:#2563eb;
 color:white;
-border:none;
-padding:15px 35px;
-border-radius:30px;
+padding:15px 32px;
+border-radius:50px;
 font-size:16px;
-cursor:pointer;
+font-weight:600;
+transition:0.3s;
 }
 
 
-.ai-card{
+button:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(37,99,235,0.25);
+}
+
+
+
+/* ---------- HEADER ---------- */
+
+
+header{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:25px 8%;
+
 background:white;
-padding:35px;
-border-radius:25px;
-width:330px;
-box-shadow:0 20px 50px rgba(0,0,0,0.1);
+
+position:sticky;
+top:0;
+
+z-index:100;
+
+box-shadow:0 5px 20px rgba(0,0,0,0.05);
+
 }
 
 
-.bot{
-font-size:50px;
-text-align:center;
+.logo{
+
+font-size:32px;
+font-weight:800;
+color:#111827;
+
 }
 
 
-.message{
+.logo span{
+
+color:#2563eb;
+
+}
+
+
+
+nav a{
+
+margin:0 15px;
+
+text-decoration:none;
+
+color:#374151;
+
+font-weight:500;
+
+}
+
+
+
+.nav-btn{
+
+padding:12px 25px;
+
+}
+
+
+
+
+
+/* ---------- HERO ---------- */
+
+
+.hero{
+
+display:flex;
+
+align-items:center;
+
+justify-content:space-between;
+
+gap:70px;
+
+padding:100px 8%;
+
+}
+
+
+
+.hero-content{
+
+max-width:650px;
+
+}
+
+
+
+.badge{
+
+display:inline-block;
+
+background:#dbeafe;
+
+color:#2563eb;
+
+padding:8px 18px;
+
+border-radius:30px;
+
+font-size:14px;
+
+font-weight:600;
+
+margin-bottom:25px;
+
+}
+
+
+
+.hero h1{
+
+font-size:65px;
+
+line-height:1.1;
+
+letter-spacing:-2px;
+
+}
+
+
+
+.hero h1 span{
+
+display:block;
+
+}
+
+
+
+.hero p{
+
+font-size:21px;
+
+color:#4b5563;
+
+margin:30px 0;
+
+}
+
+
+
+.hero-buttons{
+
+display:flex;
+
+gap:20px;
+
+}
+
+
+
+.secondary{
+
+background:white;
+
+color:#2563eb;
+
+border:1px solid #2563eb;
+
+}
+
+
+
+.trust{
+
+margin-top:30px;
+
+color:#374151;
+
+}
+
+
+
+
+
+
+/* ---------- AI CARD ---------- */
+
+
+.ai-preview{
+
+width:380px;
+
+background:white;
+
+border-radius:30px;
+
+padding:30px;
+
+box-shadow:
+0 30px 70px rgba(0,0,0,0.12);
+
+animation:float 4s infinite ease-in-out;
+
+}
+
+
+
+@keyframes float{
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+}
+
+
+
+.ai-header{
+
+display:flex;
+
+align-items:center;
+
+gap:15px;
+
+margin-bottom:25px;
+
+}
+
+
+.avatar{
+
+font-size:45px;
+
+}
+
+
+
+.ai-header p{
+
+color:#22c55e;
+
+font-size:14px;
+
+}
+
+
+
+.bubble{
+
 background:#f1f5f9;
-padding:12px;
-border-radius:15px;
-margin-top:15px;
+
+padding:15px;
+
+border-radius:18px;
+
+margin:15px 0;
+
 }
+
+
+.bubble.user{
+
+background:#2563eb;
+
+color:white;
+
+margin-left:40px;
+
+}
+
+
+
+
+
+
+
+/* ---------- SECTIONS ---------- */
 
 
 section{
-padding:80px 8%;
+
+padding:90px 8%;
+
 text-align:center;
+
 }
 
 
 section h2{
-font-size:38px;
+
+font-size:42px;
+
 margin-bottom:20px;
+
+letter-spacing:-1px;
+
 }
+
+
+section>p{
+
+color:#6b7280;
+
+font-size:18px;
+
+}
+
+
+
+
+
+/* ---------- TRUST STATS ---------- */
+
+
+.stats{
+
+display:flex;
+
+justify-content:center;
+
+gap:50px;
+
+margin-top:50px;
+
+}
+
+
+
+.stats h3{
+
+font-size:45px;
+
+color:#2563eb;
+
+}
+
+
+
+
+
+
+
+
+/* ---------- STEPS ---------- */
+
+
+.steps{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:50px;
+
+flex-wrap:wrap;
+
+}
+
+
+
+.step{
+
+background:white;
+
+width:300px;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+
+}
+
+
+
+.step div{
+
+width:45px;
+
+height:45px;
+
+margin:auto;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:bold;
+
+font-size:20px;
+
+}
+
+
+
+
+
+/* ---------- DEMO ---------- */
+
+
+.demo-box{
+
+height:350px;
+
+max-width:900px;
+
+margin:40px auto;
+
+background:white;
+
+border-radius:30px;
+
+box-shadow:0 20px 50px rgba(0,0,0,0.08);
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+color:#9ca3af;
+
+}
+
+
+
+
+
+
+/* ---------- FEATURES ---------- */
 
 
 .cards{
+
 display:flex;
+
 justify-content:center;
-gap:25px;
+
+gap:30px;
+
 flex-wrap:wrap;
-margin-top:40px;
+
+margin-top:50px;
+
 }
+
 
 
 .card{
+
 background:white;
-width:320px;
+
+width:300px;
+
 padding:35px;
+
 border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.08);
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,0.07);
+
+transition:0.3s;
+
 }
 
 
-.card h3{
-font-size:22px;
+
+.card:hover{
+
+transform:translateY(-8px);
+
 }
 
-
-.card h2{
-color:#2563eb;
-margin:20px 0;
-}
 
 
 .card p{
-color:#4b5563;
-line-height:1.8;
+
+color:#6b7280;
+
 }
 
 
 
-.price{
+
+
+
+
+/* ---------- ROI ---------- */
+
+
+.comparison{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+margin-top:40px;
+
+}
+
+
+
+.comparison div{
+
 background:white;
-max-width:450px;
-margin:auto;
-padding:45px;
+
+padding:35px;
+
+width:350px;
+
 border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.1);
+
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+
 }
 
 
-.price h1{
+
+
+
+/* ---------- PRICING ---------- */
+
+
+.pricing-card{
+
+background:white;
+
+max-width:450px;
+
+margin:40px auto;
+
+padding:50px;
+
+border-radius:30px;
+
+box-shadow:
+
+0 20px 60px rgba(0,0,0,0.12);
+
+}
+
+
+
+.pricing-card h1{
+
+font-size:60px;
+
 color:#2563eb;
-font-size:45px;
-margin:20px;
+
 }
+
+
+
+.pricing-card span{
+
+font-size:18px;
+
+color:#6b7280;
+
+}
+
+
+
+
+
+/* ---------- TESTIMONIAL ---------- */
+
+
+.quote{
+
+background:white;
+
+max-width:700px;
+
+margin:auto;
+
+padding:40px;
+
+border-radius:25px;
+
+font-size:22px;
+
+font-style:italic;
+
+box-shadow:0 15px 40px rgba(0,0,0,0.08);
+
+}
+
+
+
+
+
+/* ---------- FOOTER ---------- */
 
 
 footer{
+
 background:#111827;
+
 color:white;
-padding:30px;
+
+padding:50px 8%;
+
 text-align:center;
+
 }
 
 
 
-@media(max-width:800px){
+footer .logo{
 
-.hero{
-flex-direction:column;
-text-align:center;
+color:white;
+
 }
 
-h1{
-font-size:40px;
+
+
+
+
+/* ---------- MOBILE ---------- */
+
+
+@media(max-width:900px){
+
+
+header{
+
+padding:20px;
+
 }
+
 
 nav{
+
 display:none;
+
+}
+
+
+.hero{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+
+.hero-buttons{
+
+justify-content:center;
+
+}
+
+
+.ai-preview{
+
+width:100%;
+
+}
+
+
+
+.stats{
+
+flex-direction:column;
+
+}
+
+
+.comparison{
+
+flex-direction:column;
+
+align-items:center;
+
 }
 
 }
@@ -201,69 +770,210 @@ display:none;
 <body>
 
 
+<!-- NAVIGATION -->
+
 <header>
 
 <div class="logo">
-Zennora
+    Zennora<span>.</span>
 </div>
 
 
 <nav>
+
 <a href="#features">Features</a>
+<a href="#how">How It Works</a>
 <a href="#pricing">Pricing</a>
 <a href="#contact">Contact</a>
+
 </nav>
+
+
+<button class="nav-btn">
+Book Demo
+</button>
+
 
 </header>
 
 
 
+
+
+<!-- HERO SECTION -->
+
+
 <section class="hero">
 
 
-<div class="hero-text">
+<div class="hero-content">
+
+
+<div class="badge">
+AI Powered Dental Reception
+</div>
+
 
 <h1>
-Your Dental Clinic's
-AI Receptionist
+Your Clinic's
+<span>AI Receptionist</span>
+That Works 24/7
 </h1>
 
 
 <p>
-Answer patient questions instantly, capture new leads,
-and help your clinic stay available 24/7.
+
+Zennora helps dental clinics answer patient questions,
+capture new opportunities, and guide visitors toward booking appointments.
+
 </p>
 
 
+<div class="hero-buttons">
+
 <button>
-Book a Demo
+Request Demo
+</button>
+
+
+<button class="secondary">
+Try AI Demo
 </button>
 
 
 </div>
 
 
+<div class="trust">
 
-<div class="ai-card">
+✓ No missed inquiries
+<br>
+✓ Works after clinic hours
+<br>
+✓ Reduces receptionist workload
 
-<div class="bot">
-🤖
 </div>
 
 
-<h3>
-Zennora AI Assistant
-</h3>
+</div>
 
 
-<div class="message">
+
+
+
+<!-- AI PREVIEW CARD -->
+
+
+<div class="ai-preview">
+
+
+<div class="ai-header">
+
+<div class="avatar">
+🤖
+</div>
+
+<div>
+
+<strong>
+Zennora AI
+</strong>
+
+<p>
+Online now
+</p>
+
+</div>
+
+
+</div>
+
+
+
+<div class="chat">
+
+<div class="bubble">
 Hi 👋 How can I help you today?
 </div>
 
 
-<div class="message">
+<div class="bubble user">
 I want to know about dental implants.
 </div>
+
+
+<div class="bubble">
+Dental implants replace missing teeth.
+Would you like to schedule a consultation?
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+<!-- TRUST SECTION -->
+
+
+<section class="trust-section">
+
+
+<h2>
+Built For Modern Dental Clinics
+</h2>
+
+
+<p>
+Turn your website into an intelligent patient assistant.
+</p>
+
+
+
+<div class="stats">
+
+
+<div>
+<h3>
+24/7
+</h3>
+<p>
+Patient Support
+</p>
+</div>
+
+
+
+<div>
+<h3>
+More
+</h3>
+<p>
+Patient Engagement
+</p>
+</div>
+
+
+
+<div>
+<h3>
+Less
+</h3>
+<p>
+Reception Workload
+</p>
+</div>
+
 
 
 </div>
@@ -272,14 +982,137 @@ I want to know about dental implants.
 </section>
 
 
+
+
+
+
+
+
+<!-- HOW IT WORKS -->
+
+
+<section id="how">
+
+
+<h2>
+How Zennora Works
+</h2>
+
+
+
+<div class="steps">
+
+
+<div class="step">
+
+<div>
+1
+</div>
+
+<h3>
+Connect
+</h3>
+
+<p>
+We connect Zennora with your clinic website.
+</p>
+
+</div>
+
+
+
+<div class="step">
+
+<div>
+2
+</div>
+
+<h3>
+Train
+</h3>
+
+<p>
+The AI learns your services, FAQs and clinic information.
+</p>
+
+</div>
+
+
+
+<div class="step">
+
+<div>
+3
+</div>
+
+<h3>
+Assist
+</h3>
+
+<p>
+Patients receive instant answers anytime.
+</p>
+
+</div>
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- DEMO SECTION -->
+
+
+<section class="demo">
+
+
+<h2>
+Experience Your AI Receptionist
+</h2>
+
+
+<p>
+Ask questions below like a real patient.
+</p>
+
+
+
+<div class="demo-box">
+
+<!-- Voiceflow chatbot appears here -->
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- FEATURES -->
 
 
 <section id="features">
 
 
 <h2>
-Why Dental Clinics Choose Zennora
+Everything Your Reception Team Needs
 </h2>
+
 
 
 <div class="cards">
@@ -288,11 +1121,11 @@ Why Dental Clinics Choose Zennora
 <div class="card">
 
 <h3>
-24/7 Patient Support
+Patient Questions
 </h3>
 
 <p>
-Answer common patient questions even when your clinic is closed.
+Automatically answer common questions about treatments, pricing and services.
 </p>
 
 </div>
@@ -302,11 +1135,11 @@ Answer common patient questions even when your clinic is closed.
 <div class="card">
 
 <h3>
-More Appointment Opportunities
+Appointment Guidance
 </h3>
 
 <p>
-Convert website visitors into potential patients.
+Guide visitors toward your booking system.
 </p>
 
 </div>
@@ -316,14 +1149,29 @@ Convert website visitors into potential patients.
 <div class="card">
 
 <h3>
-Save Reception Time
+Lead Capture
 </h3>
 
 <p>
-Reduce repetitive calls and allow your team to focus on patients.
+Collect potential patient information even after hours.
 </p>
 
 </div>
+
+
+
+<div class="card">
+
+<h3>
+Clinic Knowledge
+</h3>
+
+<p>
+Customized using your clinic information.
+</p>
+
+</div>
+
 
 
 </div>
@@ -335,88 +1183,58 @@ Reduce repetitive calls and allow your team to focus on patients.
 
 
 
-<section>
+
+
+
+<!-- ROI SECTION -->
+
+
+<section class="roi">
 
 
 <h2>
-Website vs AI Receptionist
+Your Website Already Gets Visitors.
 </h2>
 
 
-<p>
-A website brings visitors. Zennora helps convert visitors into conversations and appointments.
-</p>
+<h2>
+Zennora Converts Them.
+</h2>
 
 
 
-<div class="cards">
+<div class="comparison">
 
 
-<div class="card">
+<div>
 
 <h3>
-Website Maintenance
+Traditional Website
 </h3>
 
-<h2>
-$100-$300/mo
-</h2>
-
 <p>
-✔ Hosting<br>
-✔ Security updates<br>
-✔ Backups<br>
-✔ Website changes
+Visitor arrives → reads → leaves
 </p>
 
 </div>
 
 
 
-
-<div class="card">
+<div>
 
 <h3>
-Zennora AI Receptionist
+With Zennora AI
 </h3>
 
-<h2>
-$299-$599/mo
-</h2>
-
 <p>
-✔ Patient questions<br>
-✔ Service information<br>
-✔ Lead capture<br>
-✔ Appointment guidance
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-Complete Solution
-</h3>
-
-<h2>
-$699+/mo
-</h2>
-
-<p>
-✔ Website support<br>
-✔ AI management<br>
-✔ Monthly improvements<br>
-✔ Analytics
+Visitor arrives → asks questions → becomes a lead
 </p>
 
 </div>
 
 
 </div>
+
 
 
 </section>
@@ -424,6 +1242,10 @@ $699+/mo
 
 
 
+
+
+
+<!-- PRICING -->
 
 
 <section id="pricing">
@@ -434,7 +1256,8 @@ Simple Pricing
 </h2>
 
 
-<div class="price">
+
+<div class="pricing-card">
 
 
 <h3>
@@ -443,21 +1266,23 @@ AI Dental Receptionist
 
 
 <h1>
-$399/month
+$399
+<span>/month</span>
 </h1>
 
 
 <p>
 
-✔ Custom clinic knowledge base<br>
-✔ Website chatbot integration<br>
-✔ Patient FAQ automation<br>
-✔ Monthly optimization
+✓ Custom AI training
+<br>
+✓ Website integration
+<br>
+✓ Patient FAQ automation
+<br>
+✓ Monthly optimization
 
 </p>
 
-
-<br>
 
 <button>
 Start Demo
@@ -474,24 +1299,53 @@ Start Demo
 
 
 
+
+<!-- TESTIMONIAL -->
+
+
+<section class="testimonial">
+
+
+<h2>
+What Clinics Want
+</h2>
+
+
+<div class="quote">
+
+"Patients expect instant answers.
+Zennora helps our clinic stay available beyond office hours."
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+<!-- CONTACT -->
+
+
 <section id="contact">
 
 
 <h2>
-Ready to Upgrade Your Dental Website?
+Ready To Upgrade Your Dental Website?
 </h2>
 
 
 <p>
-Let patients get answers instantly with Zennora AI.
+Book a free demonstration of Zennora AI.
 </p>
 
 
-<br>
-
-
 <button>
-Request Demo
+Schedule Demo
 </button>
 
 
@@ -501,9 +1355,19 @@ Request Demo
 
 
 
+
+
 <footer>
 
-© 2026 Zennora. All rights reserved.
+<div class="logo">
+Zennora.
+</div>
+
+
+<p>
+© 2026 Zennora. AI Receptionist Solutions.
+</p>
+
 
 </footer>
 
@@ -511,67 +1375,61 @@ Request Demo
 
 
 
-<!-- Voiceflow Chatbot -->
+<!-- VOICEFLOW AI CHATBOT -->
 
 <script type="text/javascript">
 
 (function(d, t) {
 
-var v = d.createElement(t), 
+var v = d.createElement(t),
 s = d.getElementsByTagName(t)[0];
+
 
 v.onload = function() {
 
 window.voiceflow.chat.load({
 
-verify: { 
-projectID: '6a5e5220ff0e0c39c847f63b' 
+verify: {
+
+projectID: '6a5e5220ff0e0c39c847f63b'
+
 },
 
 url: 'https://general-runtime.voiceflow.com',
+
+
+versionID: 'production',
+
 
 voice: {
 
 url: "https://runtime-api.voiceflow.com"
 
-}
+},
+
+
 
 });
 
-}
+};
 
-v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+
+v.src =
+"https://cdn.voiceflow.com/widget-next/bundle.mjs";
+
 
 v.type = "text/javascript";
 
-s.parentNode.insertBefore(v, s);
+
+s.parentNode.insertBefore(v,s);
 
 
-})(document, 'script');
-
-</script>
+})(document,'script');
 
 
-
-<!-- Voiceflow AI Chatbot -->
-<script type="text/javascript">
-  (function(d, t) {
-      var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-      v.onload = function() {
-        window.voiceflow.chat.load({
-          verify: { projectID: '6a5e5220ff0e0c39c847f63b' },
-          url: 'https://general-runtime.voiceflow.com',
-          voice: {
-            url: "https://runtime-api.voiceflow.com"
-          }
-        });
-      }
-      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-      v.type = "text/javascript";
-      s.parentNode.insertBefore(v, s);
-  })(document, 'script');
 </script>
 
 
 </body>
+
 </html>
