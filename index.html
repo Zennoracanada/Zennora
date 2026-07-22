@@ -7,27 +7,29 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <title>
 Zennora | AI Receptionists for Growing Businesses
 </title>
 
 
 <meta name="description" content="
-Zennora provides AI receptionists that answer customer questions, capture leads and help businesses grow 24/7. Starting with dental clinics.
+Zennora provides AI receptionists that help businesses answer questions, capture leads and grow 24/7. Starting with dental clinics.
 ">
 
 
 <meta name="keywords" content="
 AI receptionist,
-AI chatbot for business,
+AI chatbot,
 dental AI receptionist,
-virtual receptionist,
-customer service automation
+business automation,
+virtual receptionist
 ">
 
 
 <style>
 
+/* GLOBAL */
 
 *{
 margin:0;
@@ -59,9 +61,7 @@ line-height:1.6;
 
 
 span{
-
 color:#2563eb;
-
 }
 
 
@@ -89,13 +89,12 @@ transition:.3s;
 }
 
 
-
 button:hover{
 
 transform:translateY(-3px);
 
 box-shadow:
-0 10px 25px rgba(37,99,235,.25);
+0 12px 30px rgba(37,99,235,.25);
 
 }
 
@@ -108,9 +107,9 @@ header{
 
 display:flex;
 
-justify-content:space-between;
-
 align-items:center;
+
+justify-content:space-between;
 
 padding:25px 8%;
 
@@ -141,11 +140,11 @@ font-weight:800;
 
 nav a{
 
-margin:0 15px;
-
 text-decoration:none;
 
 color:#374151;
+
+margin:0 15px;
 
 font-weight:500;
 
@@ -155,9 +154,13 @@ font-weight:500;
 
 .nav-btn{
 
-padding:12px 25px;
+padding:12px 26px;
 
 }
+
+
+
+
 
 
 
@@ -200,9 +203,9 @@ padding:8px 18px;
 
 border-radius:30px;
 
-font-size:14px;
-
 font-weight:600;
+
+font-size:14px;
 
 margin-bottom:25px;
 
@@ -248,9 +251,9 @@ gap:20px;
 
 background:white;
 
-color:#2563eb;
-
 border:1px solid #2563eb;
+
+color:#2563eb;
 
 }
 
@@ -266,20 +269,23 @@ color:#374151;
 
 
 
+
+
 /* AI PREVIEW */
 
 
 .ai-preview{
 
-width:380px;
+width:390px;
 
 background:white;
 
-border-radius:30px;
-
 padding:30px;
 
+border-radius:30px;
+
 box-shadow:
+
 0 30px 70px rgba(0,0,0,.12);
 
 animation:float 4s infinite ease-in-out;
@@ -304,9 +310,11 @@ transform:translateY(-15px);
 
 display:flex;
 
+align-items:center;
+
 gap:15px;
 
-align-items:center;
+margin-bottom:20px;
 
 }
 
@@ -356,6 +364,171 @@ margin-left:40px;
 
 
 
+/* ALL SECTIONS */
+
+
+section{
+
+padding:90px 8%;
+
+text-align:center;
+
+}
+
+
+
+section h2{
+
+font-size:42px;
+
+letter-spacing:-1px;
+
+margin-bottom:20px;
+
+}
+
+
+
+section>p{
+
+font-size:18px;
+
+color:#6b7280;
+
+}
+
+
+
+
+
+
+
+/* CARDS */
+
+
+.cards{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+margin-top:50px;
+
+}
+
+
+
+.card{
+
+background:white;
+
+width:300px;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+
+transition:.3s;
+
+}
+
+
+
+.card:hover{
+
+transform:translateY(-8px);
+
+}
+
+
+
+.card p{
+
+color:#6b7280;
+
+}
+
+
+
+
+
+
+
+/* STEPS */
+
+
+.steps{
+
+display:flex;
+
+justify-content:center;
+
+gap:30px;
+
+flex-wrap:wrap;
+
+margin-top:50px;
+
+}
+
+
+
+.step{
+
+background:white;
+
+width:300px;
+
+padding:35px;
+
+border-radius:25px;
+
+box-shadow:
+
+0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+
+.step div{
+
+width:45px;
+
+height:45px;
+
+margin:auto;
+
+background:#2563eb;
+
+color:white;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-weight:bold;
+
+}
+
+
+
+
+
+
+
 /* MOBILE */
 
 
@@ -369,6 +542,7 @@ display:none;
 }
 
 
+
 .hero{
 
 flex-direction:column;
@@ -378,11 +552,13 @@ text-align:center;
 }
 
 
+
 .hero h1{
 
 font-size:42px;
 
 }
+
 
 
 .ai-preview{
@@ -392,6 +568,7 @@ width:100%;
 }
 
 
+
 .hero-buttons{
 
 justify-content:center;
@@ -399,19 +576,54 @@ justify-content:center;
 }
 
 
+}
+
+.demo-box{
+
+max-width:800px;
+margin:40px auto;
+background:white;
+padding:50px;
+border-radius:30px;
+box-shadow:0 20px 50px rgba(0,0,0,.08);
 
 }
 
 
-</style>
+.pricing-card{
 
+background:white;
+max-width:450px;
+margin:40px auto;
+padding:50px;
+border-radius:30px;
+box-shadow:0 20px 60px rgba(0,0,0,.12);
+
+}
+
+
+.pricing-card h1{
+
+font-size:60px;
+color:#2563eb;
+
+}
+
+
+.pricing-card span{
+
+font-size:18px;
+color:#6b7280;
+
+}
+
+</style>
 
 </head>
 
 
 
 <body>
-
 
 
 <header>
@@ -424,11 +636,13 @@ Zennora<span>.</span>
 </div>
 
 
+
 <nav>
 
 <a href="#solutions">
 Solutions
 </a>
+
 
 <a href="#how">
 How It Works
@@ -456,8 +670,8 @@ Book Demo
 </button>
 
 
-
 </header>
+
 
 
 
@@ -508,7 +722,6 @@ Book Free Demo
 </button>
 
 
-
 <button class="secondary">
 
 See How It Works
@@ -516,13 +729,11 @@ See How It Works
 </button>
 
 
-
 </div>
 
 
 
 <div class="trust">
-
 
 ✓ Available 24/7
 
@@ -534,9 +745,7 @@ See How It Works
 
 ✓ Starting with dental clinics
 
-
 </div>
-
 
 
 </div>
@@ -552,14 +761,18 @@ See How It Works
 
 
 <div class="avatar">
+
 🤖
+
 </div>
 
 
 <div>
 
 <strong>
+
 Zennora AI
+
 </strong>
 
 
@@ -606,18 +819,18 @@ I can answer questions and help you get started.
 
 </section>
 
-    <!-- INDUSTRIES SECTION -->
+    <!-- DENTAL FIRST SECTION -->
 
-<section id="solutions">
+<section class="dental-focus">
 
 
 <h2>
-AI Receptionists For Different Industries
+Starting With Dental Clinics
 </h2>
 
 
 <p>
-One AI platform. Customized for different businesses.
+Our first solution helps dental clinics capture more patients and reduce repetitive front desk work.
 </p>
 
 
@@ -628,14 +841,88 @@ One AI platform. Customized for different businesses.
 <div class="card">
 
 <h3>
+🦷 Patient Questions
+</h3>
+
+<p>
+Answer common questions about treatments, insurance, pricing and clinic hours instantly.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+📅 Appointment Support
+</h3>
+
+<p>
+Guide patients toward consultations and appointment requests.
+</p>
+
+</div>
+
+
+
+<div class="card">
+
+<h3>
+🌙 After-Hours Assistant
+</h3>
+
+<p>
+Help patients even when your clinic is closed.
+</p>
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+<!-- INDUSTRIES -->
+
+
+<section id="solutions">
+
+
+<h2>
+Solutions For Different Industries
+</h2>
+
+
+<p>
+One AI platform customized for different businesses.
+</p>
+
+
+
+
+<div class="cards">
+
+
+
+<div class="card">
+
+<h3>
 🦷 Dental Clinics
 </h3>
 
 <p>
-Our first solution. Answer patient questions, capture appointment requests and reduce receptionist workload.
+Our first priority. Convert website visitors into patient opportunities.
 </p>
 
 </div>
+
 
 
 
@@ -646,7 +933,7 @@ Our first solution. Answer patient questions, capture appointment requests and r
 </h3>
 
 <p>
-Help customers explore vehicles, schedule test drives and answer service questions 24/7.
+Answer vehicle questions, service requests and customer inquiries.
 </p>
 
 </div>
@@ -661,7 +948,7 @@ Help customers explore vehicles, schedule test drives and answer service questio
 </h3>
 
 <p>
-Support physiotherapy, chiropractic and other healthcare businesses.
+Support physiotherapy, chiropractic and healthcare businesses.
 </p>
 
 </div>
@@ -672,104 +959,24 @@ Support physiotherapy, chiropractic and other healthcare businesses.
 <div class="card">
 
 <h3>
-🏠 Professional Services
+🏠 Services
 </h3>
 
 <p>
-Capture leads for real estate, insurance, legal and other service businesses.
+Help real estate, insurance, legal and home service businesses capture leads.
 </p>
 
 </div>
 
 
+
 </div>
+
 
 
 </section>
 
 
-
-
-
-<!-- DENTAL FIRST SECTION -->
-
-
-<section class="dental-focus">
-
-
-<h2>
-
-Starting With Dental Clinics
-
-</h2>
-
-
-
-<p>
-
-Dental clinics are our first focus because every missed inquiry can mean a missed appointment.
-
-</p>
-
-
-
-
-<div class="cards">
-
-
-<div class="card">
-
-<h3>
-Patient Questions
-</h3>
-
-<p>
-
-Answer common questions about treatments, pricing, insurance and clinic hours.
-
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-Appointment Support
-</h3>
-
-<p>
-
-Guide patients toward consultations and booking requests.
-
-</p>
-
-</div>
-
-
-
-
-<div class="card">
-
-<h3>
-After-Hours Assistant
-</h3>
-
-<p>
-
-Continue supporting patients even when the clinic is closed.
-
-</p>
-
-</div>
-
-
-</div>
-
-
-</section>
 
 
 
@@ -788,11 +995,8 @@ How Zennora Works
 </h2>
 
 
-
 <p>
-
-Simple setup. Powerful customer support.
-
+Simple setup. Intelligent customer conversations.
 </p>
 
 
@@ -802,6 +1006,7 @@ Simple setup. Powerful customer support.
 
 
 <div class="step">
+
 
 <div>
 1
@@ -814,9 +1019,7 @@ Connect
 
 
 <p>
-
-We connect Zennora to your website and business information.
-
+We connect Zennora with your website and business information.
 </p>
 
 
@@ -827,6 +1030,7 @@ We connect Zennora to your website and business information.
 
 
 <div class="step">
+
 
 <div>
 2
@@ -839,9 +1043,7 @@ Customize
 
 
 <p>
-
-The AI learns your services, FAQs, policies and customer needs.
-
+The AI learns your services, FAQs and customer requirements.
 </p>
 
 
@@ -852,6 +1054,7 @@ The AI learns your services, FAQs, policies and customer needs.
 
 
 <div class="step">
+
 
 <div>
 3
@@ -864,9 +1067,7 @@ Convert
 
 
 <p>
-
-Visitors receive answers and become qualified leads.
-
+Visitors get answers and become qualified leads.
 </p>
 
 
@@ -878,8 +1079,9 @@ Visitors receive answers and become qualified leads.
 </div>
 
 
-
 </section>
+
+
 
 
 
@@ -895,9 +1097,7 @@ Visitors receive answers and become qualified leads.
 
 
 <h2>
-
 Everything Your Business Needs
-
 </h2>
 
 
@@ -905,42 +1105,30 @@ Everything Your Business Needs
 <div class="cards">
 
 
-
 <div class="card">
 
-
 <h3>
-24/7 Customer Support
+24/7 Support
 </h3>
 
-
 <p>
-
-Answer customers instantly even outside business hours.
-
+Respond instantly even outside business hours.
 </p>
-
 
 </div>
 
 
 
 
-
 <div class="card">
-
 
 <h3>
 Lead Capture
 </h3>
 
-
 <p>
-
-Collect customer information and inquiries automatically.
-
+Collect customer details automatically.
 </p>
-
 
 </div>
 
@@ -949,42 +1137,29 @@ Collect customer information and inquiries automatically.
 
 
 <div class="card">
-
 
 <h3>
-Business Knowledge
-
+Custom Knowledge
 </h3>
 
-
 <p>
-
-Customized AI trained on your products, services and FAQs.
-
+Train AI with your business information.
 </p>
-
 
 </div>
 
 
 
 
-
 <div class="card">
-
 
 <h3>
 Easy Integration
-
 </h3>
 
-
 <p>
-
-Works with your existing website without rebuilding it.
-
+Add Zennora to your existing website.
 </p>
-
 
 </div>
 
@@ -1003,67 +1178,49 @@ Works with your existing website without rebuilding it.
 
 
 
-<!-- WHY ZENNORA -->
+
+<!-- DEMO -->
 
 
 <section>
 
 
 <h2>
-
-Why Businesses Choose Zennora
-
+Experience Zennora AI
 </h2>
 
 
+<p>
+Ask questions like a real customer.
+</p>
 
-<div class="comparison">
 
 
-
-<div>
+<div class="demo-box">
 
 
 <h3>
-
-Traditional Website
-
+🤖 Live AI Receptionist Demo
 </h3>
 
 
 <p>
 
-Visitor arrives → searches → leaves
+Try asking:
+
+<br><br>
+
+"What are your services?"
+
+<br>
+
+"Do you accept insurance?"
+
+<br>
+
+"Can I book an appointment?"
 
 </p>
-
-
-</div>
-
-
-
-
-
-<div>
-
-
-<h3>
-
-With Zennora AI
-
-</h3>
-
-
-<p>
-
-Visitor arrives → asks questions → becomes a lead
-
-</p>
-
-
-</div>
-
-
 
 
 </div>
@@ -1071,6 +1228,7 @@ Visitor arrives → asks questions → becomes a lead
 
 
 </section>
+
 
 
 
@@ -1086,9 +1244,7 @@ Visitor arrives → asks questions → becomes a lead
 
 
 <h2>
-
 Simple Pricing
-
 </h2>
 
 
@@ -1099,38 +1255,30 @@ Simple Pricing
 
 
 <h3>
-
 AI Receptionist Starter
-
 </h3>
 
 
-
 <h1>
-
 $299
-
 <span>
 /month
 </span>
-
 </h1>
-
 
 
 
 <p>
 
-
 ✓ AI setup
 
 <br>
 
-✓ Website chatbot
+✓ Website integration
 
 <br>
 
-✓ Custom business training
+✓ Business knowledge training
 
 <br>
 
@@ -1140,68 +1288,89 @@ $299
 
 ✓ Monthly improvements
 
-
 </p>
 
 
+<br>
 
 
 <button>
-
 Start Demo
-
 </button>
-
 
 
 </div>
 
 
-
 </section>
 
-    <!-- LIVE AI DEMO -->
+
+
+
+
+
+
+
+
+<!-- FAQ -->
+
 
 <section>
 
 
 <h2>
-Experience Your AI Receptionist
+Frequently Asked Questions
 </h2>
 
 
-<p>
-Ask Zennora questions like a real customer.
-</p>
 
 
+<div class="cards">
 
-<div class="demo-box">
 
-
-<div>
+<div class="card">
 
 <h3>
-🤖 Zennora AI Demo
+Do I need a new website?
 </h3>
 
 
 <p>
+No. Zennora can be added to your existing website.
+</p>
 
-Try asking:
 
-<br><br>
+</div>
 
-"What services do you offer?"
 
-<br>
 
-"How much does treatment cost?"
 
-<br>
+<div class="card">
 
-"What are your business hours?"
+<h3>
+Can AI answer only my information?
+</h3>
 
+
+<p>
+Yes. The assistant is customized using your business knowledge.
+</p>
+
+
+</div>
+
+
+
+
+<div class="card">
+
+<h3>
+Can it collect leads?
+</h3>
+
+
+<p>
+Yes. It can capture customer information and requests.
 </p>
 
 
@@ -1221,56 +1390,38 @@ Try asking:
 
 
 
-<!-- CONTACT SECTION -->
+
+
+<!-- CONTACT -->
 
 
 <section id="contact">
 
 
 <h2>
-
 Ready To Add AI To Your Business?
-
 </h2>
 
 
 
 <p>
-
-Book a free demonstration and see how Zennora can help your business.
-
+Book a free demonstration of Zennora.
 </p>
 
 
 
-
-<div class="contact-form">
-
-
-<input type="text" placeholder="Business Name">
-
-
-<input type="text" placeholder="Your Name">
-
-
-<input type="email" placeholder="Email Address">
-
-
-<input type="text" placeholder="Website">
+<br>
 
 
 <button>
-
 Request Demo
-
 </button>
-
-
-</div>
 
 
 
 </section>
+
+
 
 
 
@@ -1282,8 +1433,12 @@ Request Demo
 <!-- FOOTER -->
 
 
-<footer>
-
+<footer style="
+background:#111827;
+color:white;
+padding:50px 8%;
+text-align:center;
+">
 
 
 <div class="logo">
@@ -1299,7 +1454,6 @@ Zennora<span>.</span>
 AI Receptionists For Growing Businesses
 
 </p>
-
 
 
 <br>
@@ -1322,89 +1476,63 @@ AI Receptionists For Growing Businesses
 
 
 
-<!-- VOICEFLOW AI CHATBOT -->
+
+<!-- VOICEFLOW -->
+
+<script>
 
 
-<script type="text/javascript">
+(function(d,t){
 
 
-(function(d, t) {
+var v=d.createElement(t),
+s=d.getElementsByTagName(t)[0];
 
 
-var v = d.createElement(t),
-
-s = d.getElementsByTagName(t)[0];
-
-
-
-v.onload = function() {
-
+v.onload=function(){
 
 
 window.voiceflow.chat.load({
 
-
-
-verify: {
-
-projectID: '6a5e5220ff0e0c39c847f63b'
-
+verify:{
+projectID:'6a5e5220ff0e0c39c847f63b'
 },
 
 
-
 url:
-
 'https://general-runtime.voiceflow.com',
 
 
-
 versionID:
-
 'production',
 
 
-
-voice: {
-
+voice:{
 url:
-
-"https://runtime-api.voiceflow.com"
-
+'https://runtime-api.voiceflow.com'
 }
-
 
 
 });
 
 
-
 };
 
 
-
-v.src =
-
-"https://cdn.voiceflow.com/widget-next/bundle.mjs";
+v.src=
+'https://cdn.voiceflow.com/widget-next/bundle.mjs';
 
 
-
-v.type =
-
-"text/javascript";
-
+v.type='text/javascript';
 
 
 s.parentNode.insertBefore(v,s);
 
 
-
 })(document,'script');
 
 
-
 </script>
-
 
 
 
