@@ -1,1 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Prevent search engines from listing personalized demo pages -->
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- CHANGE THE CLINIC NAME -->
+  <title>AI Receptionist Demo | Sample Dental Clinic</title>
+
+  <meta
+    name="description"
+    content="A personalized AI receptionist demonstration prepared by Zennora."
+  >
+
+  <!-- Favicon is one folder above the demos folder -->
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+  <style>
+    :root {
+      --primary: #e9785d;
+      --primary-dark: #c95740;
+      --primary-light: #fff1ed;
+      --navy: #17243a;
+      --text: #263348;
+      --muted: #667085;
+      --background: #fffaf8;
+      --white: #ffffff;
+      --border: #eaded9;
+      --success: #16865c;
+      --shadow: 0 18px 45px rgba(35, 40, 55, 0.10);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        ui-sans-serif,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(233, 120, 93, 0.13),
+          transparent 34%
+        ),
+        var(--background);
+
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      background: rgba(255, 255, 255, 0.92);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--navy);
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--primary-light);
+      border: 1px solid rgba(233, 120, 93, 0.25);
+      display: grid;
+      place-items: center;
+      color: var(--primary-dark);
+      font-weight: 900;
+    }
+
+    .demo-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 999px;
+      background: #edf9f4;
+      color: var(--success);
+      border: 1px solid #ccecdf;
+      font-size: 0.88rem;
+      font-weight: 700;
+    }
+
+    .demo-badge::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--success);
+    }
+
+    .hero {
+      padding: 80px 0 56px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--primary-dark);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-size: clamp(2.4rem, 5vw, 4.4rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      max-width: 760px;
+    }
+
+    .highlight {
+      color: var(--primary-dark);
+    }
+
+    .hero-description {
+      margin-top: 24px;
+      max-width: 690px;
+      font-size: 1.12rem;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 12px 21px;
+      border-radius: 12px;
+      font-weight: 750;
+      text-decoration: none;
+      transition:
+        transform 160ms ease,
+        box-shadow 160ms ease,
+        background 160ms ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: var(--white);
+      box-shadow: 0 12px 25px rgba(201, 87, 64, 0.24);
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+    }
+
+    .button-secondary {
+      background: var(--white);
+      color: var(--navy);
+      border: 1px solid var(--border);
+    }
+
+    .demo-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .demo-card-top {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .clinic-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: var(--primary-light);
+      display: grid;
+      place-items: center;
+      font-size: 1.4rem;
+    }
+
+    .clinic-name {
+      color: var(--navy);
+      font-size: 1.08rem;
+      font-weight: 800;
+    }
+
+    .clinic-subtitle {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .chat-preview {
+      padding-top: 22px;
+    }
+
+    .message {
+      max-width: 90%;
+      padding: 13px 15px;
+      border-radius: 15px;
+      margin-bottom: 13px;
+      font-size: 0.94rem;
+    }
+
+    .message-bot {
+      background: #f4f6f9;
+      color: var(--text);
+      border-bottom-left-radius: 5px;
+    }
+
+    .message-user {
+      background: var(--primary);
+      color: var(--white);
+      margin-left: auto;
+      border-bottom-right-radius: 5px;
+    }
+
+    .typing {
+      display: inline-flex;
+      gap: 5px;
+      padding: 13px 15px;
+      background: #f4f6f9;
+      border-radius: 15px;
+      border-bottom-left-radius: 5px;
+    }
+
+    .typing span {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #98a2b3;
+      animation: typing 1.2s infinite;
+    }
+
+    .typing span:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .typing span:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+
+    @keyframes typing {
+      0%,
+      60%,
+      100% {
+        transform: translateY(0);
+        opacity: 0.5;
+      }
+
+      30% {
+        transform: translateY(-4px);
+        opacity: 1;
+      }
+    }
+
+    .section {
+      padding: 64px 0;
+    }
+
+    .section-heading {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.7rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .section-heading p {
+      margin-top: 13px;
+      color: var(--muted);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .feature-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 13px;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      display: grid;
+      place-items: center;
+      margin-bottom: 17px;
+      font-size: 1.15rem;
+    }
+
+    .feature-card h3 {
+      color: var(--navy);
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .try-section {
+      padding: 68px 0;
+    }
+
+    .try-panel {
+      background: var(--navy);
+      color: var(--white);
+      border-radius: 26px;
+      padding: 42px;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .try-panel h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+    }
+
+    .try-panel p {
+      margin-top: 14px;
+      color: #cad2df;
+    }
+
+    .questions {
+      display: grid;
+      gap: 11px;
+    }
+
+    .question {
+      background: rgba(255, 255, 255, 0.09);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 13px;
+      padding: 13px 15px;
+      color: var(--white);
+      font-size: 0.94rem;
+    }
+
+    .notice {
+      margin-top: 20px;
+      color: #aeb9ca;
+      font-size: 0.83rem;
+    }
+
+    .cta-section {
+      padding: 30px 0 80px;
+    }
+
+    .cta-card {
+      text-align: center;
+      background: var(--primary-light);
+      border: 1px solid rgba(233, 120, 93, 0.23);
+      border-radius: 25px;
+      padding: 46px 24px;
+    }
+
+    .cta-card h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+    }
+
+    .cta-card p {
+      color: var(--muted);
+      max-width: 670px;
+      margin: 14px auto 0;
+    }
+
+    .cta-card .hero-actions {
+      justify-content: center;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      background: var(--white);
+      padding: 28px 0;
+    }
+
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-inner a {
+      color: var(--navy);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 860px) {
+      .hero {
+        padding-top: 55px;
+      }
+
+      .hero-grid,
+      .try-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .header-inner {
+        min-height: 68px;
+      }
+
+      .demo-badge {
+        font-size: 0.75rem;
+        padding: 7px 10px;
+      }
+
+      .hero {
+        padding: 48px 0 35px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .demo-card,
+      .try-panel {
+        padding: 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+
+      <a class="brand" href="../index.html" aria-label="Zennora homepage">
+        <span class="brand-mark">Z</span>
+        <span>Zennora</span>
+      </a>
+
+      <span class="demo-badge">Personalized demo</span>
+
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero">
+      <div class="container hero-grid">
+
+        <div>
+          <span class="eyebrow">Prepared especially for your clinic</span>
+
+          <!-- CHANGE THE CLINIC NAME BELOW -->
+          <h1>
+            Meet the AI receptionist built for
+            <span class="highlight">Sample Dental Clinic.</span>
+          </h1>
+
+          <p class="hero-description">
+            This personalized demonstration shows how an AI receptionist
+            can answer common questions using information from your clinic's
+            website and guide visitors toward the right next step.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="#try-demo">
+              Try the AI receptionist
+            </a>
+
+            <!-- CHANGE THIS TO THE CLINIC WEBSITE -->
+            <a
+              class="button button-secondary"
+              href="https://exampleclinic.ca"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit clinic website
+            </a>
+          </div>
+        </div>
+
+        <div class="demo-card">
+
+          <div class="demo-card-top">
+            <div class="clinic-icon" aria-hidden="true">✦</div>
+
+            <div>
+              <!-- CHANGE THE CLINIC NAME -->
+              <div class="clinic-name">Sample Dental Clinic Assistant</div>
+              <div class="clinic-subtitle">AI-powered website support</div>
+            </div>
+          </div>
+
+          <div class="chat-preview">
+
+            <div class="message message-bot">
+              Hi! How can I help you with your dental care today?
+            </div>
+
+            <div class="message message-user">
+              Do you accept new patients?
+            </div>
+
+            <div class="message message-bot">
+              Yes, the clinic is currently welcoming new patients. I can also
+              direct you to the clinic's appointment request page.
+            </div>
+
+            <div class="typing" aria-label="Assistant is typing">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+
+        <div class="section-heading">
+          <span class="eyebrow">What this demonstration shows</span>
+
+          <h2>
+            Helpful answers without making visitors search through every page
+          </h2>
+
+          <p>
+            The assistant uses approved clinic information to provide quick,
+            conversational website support.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">?</div>
+
+            <h3>Answers common questions</h3>
+
+            <p>
+              Helps visitors find information about services, office hours,
+              location, policies and other details available in the clinic's
+              knowledge base.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">↗</div>
+
+            <h3>Guides visitors to booking</h3>
+
+            <p>
+              Directs interested patients to the clinic's existing online
+              booking or appointment-request page.
+            </p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon" aria-hidden="true">24</div>
+
+            <h3>Available outside office hours</h3>
+
+            <p>
+              Provides consistent website assistance even when the front desk
+              is unavailable to respond immediately.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="try-section" id="try-demo">
+      <div class="container">
+
+        <div class="try-panel">
+
+          <div>
+            <span class="eyebrow" style="color: #ffb09d;">
+              Try the personalized assistant
+            </span>
+
+            <h2>Open the chat button and ask a real clinic question.</h2>
+
+            <p>
+              The chat button will appear in the lower-right corner of this
+              page after the Voiceflow project has been connected.
+            </p>
+
+            <p class="notice">
+              Demonstration only. The assistant should not be used for
+              emergencies, diagnosis or urgent medical advice.
+            </p>
+          </div>
+
+          <div class="questions">
+            <div class="question">“Are you accepting new patients?”</div>
+            <div class="question">“What dental services do you provide?”</div>
+            <div class="question">“Where is the clinic located?”</div>
+            <div class="question">“How can I request an appointment?”</div>
+            <div class="question">“What are your opening hours?”</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+
+        <div class="cta-card">
+
+          <h2>Ready to discuss your clinic's AI receptionist?</h2>
+
+          <p>
+            This demonstration is a preview. The final assistant can be refined
+            using your approved content, preferred tone and website workflow.
+          </p>
+
+          <div class="hero-actions">
+
+            <!-- CHANGE THIS IF YOUR CALENDLY LINK IS DIFFERENT -->
+            <a
+              class="button button-primary"
+              href="https://calendly.com/zennora/30min"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Schedule a consultation
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="mailto:zennora.ca@gmail.com"
+            >
+              Email Zennora
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+
+      <p>
+        Demo prepared by
+        <a href="../index.html">Zennora</a>
+        · Made with care in Canada 🇨🇦
+      </p>
+
+      <p>
+        <a href="../privacy.html">Privacy</a>
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       VOICEFLOW CHAT WIDGET
+
+       Replace YOUR_VOICEFLOW_PROJECT_ID with the project ID for
+       the clinic's personalized Voiceflow project.
+
+       Example:
+       verify: { projectID: 'abc123projectid' }
+       ========================================================= -->
+
+  <script type="text/javascript">
+    (function (d, t) {
+      const v = d.createElement(t);
+      const s = d.getElementsByTagName(t)[0];
+
+      v.onload = function () {
+        window.voiceflow.chat.load({
+          verify: {
+            projectID: "YOUR_VOICEFLOW_PROJECT_ID"
+          },
+          url: "https://general-runtime.voiceflow.com",
+          versionID: "production",
+          voice: {
+            url: "https://runtime-api.voiceflow.com"
+          }
+        });
+      };
+
+      v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+      v.type = "text/javascript";
+
+      s.parentNode.insertBefore(v, s);
+    })(document, "script");
+  </script>
+
+</body>
+</html>
