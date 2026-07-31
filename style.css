@@ -193,6 +193,7 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .field input, .field textarea { width: 100%; border: 1px solid #cfd8e8; border-radius: 13px; padding: 13px 14px; }
 .field input:focus, .field textarea:focus { outline: 3px solid rgba(36,87,245,.12); border-color: var(--primary); }
 .field textarea { min-height: 120px; resize: vertical; }
+
 .form-note { font-size: .82rem; color: var(--muted); }
 
 .dental-booking-section { position: relative; overflow: hidden; padding: 78px 0; background: radial-gradient(circle at 92% 2%,rgba(255,255,255,.10),transparent 22%), radial-gradient(circle at 8% 96%,rgba(73,225,189,.08),transparent 26%), linear-gradient(120deg,#071f5d 0%,#163bb8 50%,#6745f4 100%); }
@@ -237,6 +238,7 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .site-footer a, .footer-button { color: #bdc9dc; text-decoration: none; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; }
 .site-footer a:hover, .footer-button:hover { color: #fff; }
 .canada-love { display: flex; justify-content: center; gap: 8px; margin-top: 38px; padding: 12px; border: 1px solid #25334c; border-radius: 999px; }
+.canada-heart { display: inline-block; color: #e5576f; filter: drop-shadow(0 0 5px rgba(229,87,111,.22)); transform-origin: center; animation: canada-heart-pulse 4s ease-in-out infinite; }
 .canada-icon { width: 18px; height: 18px; color: #ff6b7b; }
 .heart { width: 15px; height: 15px; color: #ff6173; display: inline-block; animation: heartBeat 2.2s infinite; vertical-align: -2px; }
 .copyright { border-top: 1px solid #243047; margin-top: 28px; padding-top: 22px; color: #7f8da4; font-size: .88rem; }
@@ -267,6 +269,11 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 @keyframes typing { 0%,60%,100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
 @keyframes flagWave { 0%,82%,100% { transform: rotate(0); } 88% { transform: rotate(-12deg); } 94% { transform: rotate(10deg); } }
 @keyframes heartBeat { 0%,70%,100% { transform: scale(1); } 78% { transform: scale(1.25); } 86% { transform: scale(1); } }
+@keyframes canada-heart-pulse { 0%,8%,16%,100% { transform: scale(1); } 12% { transform: scale(1.12); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .canada-heart { animation: none; }
+}
 
 @media (max-width: 1040px) {
   nav { gap: 17px; }
