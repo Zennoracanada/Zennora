@@ -119,12 +119,16 @@ if (form) {
     event.preventDefault();
     const data = new FormData(form);
     const business = String(data.get("business") || "Website inquiry").trim();
+    const websiteEntry = String(data.get("website") || "").trim();
+    const website = websiteEntry && !/^https?:\/\//i.test(websiteEntry)
+      ? `https://${websiteEntry}`
+      : websiteEntry;
     const subject = encodeURIComponent(`Zennora demo request — ${business}`);
     const body = encodeURIComponent(
       `Name: ${String(data.get("name") || "").trim()}\n` +
       `Email: ${String(data.get("email") || "").trim()}\n` +
       `Business: ${business}\n` +
-      `Website: ${String(data.get("website") || "").trim()}\n\n` +
+      `Website: ${website}\n\n` +
       `What the AI receptionist should help with:\n${String(data.get("message") || "").trim()}`
     );
     window.location.href = `mailto:${SITE_CONFIG.contactEmail}?subject=${subject}&body=${body}`;
