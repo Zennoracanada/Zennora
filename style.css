@@ -79,7 +79,20 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .demo-cta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 2px 0 15px; padding: 12px 14px; border-radius: 14px; background: #f7f9ff; border: 1px solid #dfe6f6; color: var(--primary); text-decoration: none; font-size: .85rem; font-weight: 800; }
 .demo-cta:hover { background: #eef3ff; }
 .demo-features { display: flex; flex-wrap: wrap; gap: 8px 14px; padding-top: 14px; border-top: 1px solid var(--line); color: #65738c; font-size: .75rem; font-weight: 700; }
-.demo-clarification { position: relative; max-width: 540px; margin: 16px auto 0; color: #dbe5f5; font-size: .78rem; line-height: 1.55; text-align: center; }
+.hero-visual.interactive-demo {
+  flex-direction: column;
+}
+
+.demo-clarification {
+  position: relative;
+  width: min(490px, 100%);
+  max-width: 490px;
+  margin: 12px auto 0;
+  color: var(--muted);
+  font-size: .78rem;
+  line-height: 1.5;
+  text-align: center;
+}
 .orb { position: absolute; border-radius: 50%; filter: blur(2px); opacity: .5; }
 .orb-one { width: 90px; height: 90px; background: #98f0d5; left: -30px; top: 160px; }
 .orb-two { width: 55px; height: 55px; background: #c9c1ff; right: 3%; bottom: 8%; }
