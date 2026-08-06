@@ -2,7 +2,7 @@
 
 const SITE_CONFIG = Object.freeze({
   calendlyBaseUrl: "https://calendly.com/zennora/30min?hide_gdpr_banner=1",
-  contactEmail: "zennora.ca@gmail.com",
+  contactEmail: "hello@zennora.ca",
   calendlyPlans: Object.freeze({
     starter: Object.freeze({
       answer: "1",
