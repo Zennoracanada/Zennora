@@ -15,7 +15,7 @@ GitHub Pages-ready static website for **Zennora AI Receptionist**.
 - Admin instructions
 - Lazy-loaded Calendly integration
 - Consistent inline SVG icon system
-- Public email links display “Email Zennora” while retaining the Gmail mailto address
+- Public email links display `hello@zennora.ca` and use the matching mailto address
 
 ## Upload to GitHub
 
