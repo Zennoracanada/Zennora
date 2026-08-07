@@ -16,7 +16,7 @@
     content="A personalized AI receptionist demonstration prepared by Zennora."
   >
 
-  <!-- Favicon is one folder above the demos folder -->
+  <!-- Shared favicon is one level above this page -->
   <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
   <style>
@@ -102,16 +102,11 @@
       font-weight: 800;
     }
 
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: var(--primary-light);
-      border: 1px solid rgba(233, 120, 93, 0.25);
-      display: grid;
-      place-items: center;
-      color: var(--primary-dark);
-      font-weight: 900;
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      flex-shrink: 0;
     }
 
     .demo-badge {
@@ -469,7 +464,22 @@
       text-decoration: none;
     }
 
+    .footer-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .footer-brand .brand-logo {
+      width: 24px;
+      height: 24px;
+    }
+
     @media (max-width: 860px) {
+      .site-header .brand-logo {
+        width: 32px;
+        height: 32px;
+      }
       .hero {
         padding-top: 55px;
       }
@@ -529,7 +539,7 @@
     <div class="container header-inner">
 
       <a class="brand" href="../index.html" aria-label="Zennora homepage">
-        <span class="brand-mark">Z</span>
+        <img class="brand-logo" src="../assets/zennora-logo.svg" alt="">
         <span>Zennora</span>
       </a>
 
@@ -750,7 +760,7 @@
 
       <p>
         Demo prepared by
-        <a href="../index.html">Zennora</a>
+        <a class="footer-brand" href="../index.html"><img class="brand-logo" src="../assets/zennora-logo.svg" alt="">Zennora</a>
         · Made with care in Canada 🇨🇦
       </p>
 
