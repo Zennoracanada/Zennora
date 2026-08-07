@@ -95,10 +95,10 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 9px;
       color: var(--navy);
       text-decoration: none;
-      font-size: 1.35rem;
+      font-size: 1.5rem;
       font-weight: 800;
     }
 
@@ -467,16 +467,23 @@
     .footer-brand {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 9px;
+      font-size: 1.5rem;
+      font-weight: 800;
     }
 
     .footer-brand .brand-logo {
-      width: 24px;
-      height: 24px;
+      width: 36px;
+      height: 36px;
     }
 
     @media (max-width: 860px) {
-      .site-header .brand-logo {
+      .brand,
+      .footer-brand {
+        font-size: 1.4rem;
+      }
+      .site-header .brand-logo,
+      .footer-brand .brand-logo {
         width: 32px;
         height: 32px;
       }
