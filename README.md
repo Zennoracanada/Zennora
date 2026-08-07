@@ -50,3 +50,4 @@ demos/demo-template.html
 GitHub Pages does not provide true password protection. Personalized demo pages are unlisted and marked `noindex`, but anyone with the exact URL may be able to access them. Do not place confidential clinic or patient information on a demo page.
 
 See `ADMIN.md` for step-by-step operating instructions.
+<!-- Trigger GitHub Pages rebuild: August 6, 2026 -->
