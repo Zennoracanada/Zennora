@@ -117,6 +117,7 @@ const dentalDemoForm = document.querySelector("#dental-demo-request-form");
 const dentalDemoFrame = document.querySelector('.demo-response-frame[name="zennora-dental-demo-response"]');
 const dentalDemoSuccess = document.querySelector("#dental-demo-success");
 const dentalDemoHeading = document.querySelector("#dental-demo-request-heading");
+const dentalRequestButton = document.querySelector(".dental-request-button");
 
 if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading) {
   const submitButton = dentalDemoForm.querySelector('button[type="submit"]');
@@ -183,6 +184,11 @@ if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading)
     dentalDemoHeading.hidden = true;
     dentalDemoForm.hidden = true;
     dentalDemoSuccess.hidden = false;
+    if (dentalRequestButton) {
+      dentalRequestButton.textContent = "✓ Demo Requested";
+      dentalRequestButton.removeAttribute("href");
+      dentalRequestButton.setAttribute("aria-disabled", "true");
+    }
     dentalDemoSuccess.focus({ preventScroll: true });
   });
 }
