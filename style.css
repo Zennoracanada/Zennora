@@ -229,6 +229,25 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .scheduler-trust span { padding: 17px 8px; }
 .scheduler-trust span + span { border-left: 1px solid var(--line); }
 
+.dental-demo-options { min-width: 0; display: grid; gap: 20px; }
+.dental-request-card { scroll-margin-top: 96px; }
+.dental-request-button { margin: 28px 0; background: linear-gradient(135deg,#fff,#dfffee); color: #123c77; box-shadow: 0 14px 34px rgba(3,12,49,.24); }
+.dental-demo-form { display: grid; gap: 16px; padding: 4px 30px 30px; }
+.dental-demo-form .field label { color: var(--navy); }
+.dental-demo-form .field label span { color: var(--muted); font-size: .82rem; font-weight: 600; }
+.dental-demo-submit { width: 100%; }
+.dental-demo-submit:disabled { cursor: wait; opacity: .72; transform: none; }
+.demo-honeypot, .demo-response-frame { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; }
+.dental-demo-success { padding: 34px 30px 38px; color: var(--muted); text-align: center; }
+.dental-demo-success .success-mark { width: 58px; height: 58px; display: grid; place-items: center; margin: 0 auto 18px; border-radius: 50%; background: #e2faef; color: #138257; font-size: 1.6rem; font-weight: 900; }
+.dental-demo-success h2 { margin-bottom: 14px; color: var(--navy); }
+.dental-demo-success p + p { margin-top: 13px; }
+.dental-demo-success strong { color: var(--navy); }
+.dental-secondary-demo { display: grid; grid-template-columns: minmax(0,1fr) auto; gap: 22px; align-items: center; padding: 22px 24px; border: 1px solid rgba(255,255,255,.3); border-radius: 20px; background: rgba(7,25,79,.28); color: #fff; }
+.dental-secondary-demo h3 { color: #fff; font-size: 1.18rem; }
+.dental-secondary-demo p { margin-top: 5px; color: #dce5fa; font-size: .9rem; line-height: 1.55; }
+.dental-secondary-demo .button { white-space: nowrap; background: #fff; }
+
 .site-footer { background: #07101f; color: #d7e0ef; padding: 56px 0 24px; }
 .footer-grid { display: grid; grid-template-columns: 1.3fr .7fr .7fr; gap: 42px; }
 .site-footer .logo { color: #fff; }
@@ -336,6 +355,10 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
   .dental-booking-copy h2 { font-size: 3.2rem; }
   .scheduler-heading { padding: 24px 20px 17px; }
   .compact-booking-panel { padding: 4px 20px 22px; }
+  .dental-demo-form { padding: 4px 20px 24px; }
+  .dental-demo-success { padding: 30px 20px 34px; }
+  .dental-secondary-demo { grid-template-columns: 1fr; }
+  .dental-secondary-demo .button { width: 100%; white-space: normal; }
   .scheduler-trust { grid-template-columns: 1fr; }
   .scheduler-trust span + span { border-left: 0; border-top: 1px solid var(--line); }
   .error-card { padding: 34px 22px; }

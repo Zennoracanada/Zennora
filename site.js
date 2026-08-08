@@ -113,6 +113,39 @@ document.querySelectorAll(".calendly-trigger").forEach((button) => {
   button.addEventListener("click", openCalendly);
 });
 
+const dentalDemoForm = document.querySelector("#dental-demo-request-form");
+const dentalDemoFrame = document.querySelector('.demo-response-frame[name="zennora-dental-demo-response"]');
+const dentalDemoSuccess = document.querySelector("#dental-demo-success");
+
+if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess) {
+  const submitButton = dentalDemoForm.querySelector('button[type="submit"]');
+  let submitted = false;
+
+  dentalDemoForm.addEventListener("submit", (event) => {
+    if (submitted) {
+      event.preventDefault();
+      return;
+    }
+
+    if (!dentalDemoForm.checkValidity()) {
+      event.preventDefault();
+      dentalDemoForm.reportValidity();
+      return;
+    }
+
+    submitted = true;
+    submitButton.disabled = true;
+    submitButton.textContent = "Sending...";
+  });
+
+  dentalDemoFrame.addEventListener("load", () => {
+    if (!submitted) return;
+    dentalDemoForm.hidden = true;
+    dentalDemoSuccess.hidden = false;
+    dentalDemoSuccess.focus({ preventScroll: true });
+  });
+}
+
 const form = document.querySelector("#lead-form");
 if (form) {
   form.addEventListener("submit", (event) => {
