@@ -194,6 +194,7 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .field input, .field textarea { width: 100%; border: 1px solid #cfd8e8; border-radius: 13px; padding: 13px 14px; }
 .field input:focus, .field textarea:focus { outline: 3px solid rgba(36,87,245,.12); border-color: var(--primary); }
 .field textarea { min-height: 120px; resize: vertical; }
+.field-error { margin: 0; color: #b42318; font-size: .88rem; }
 
 .form-note { font-size: .82rem; color: var(--muted); }
 

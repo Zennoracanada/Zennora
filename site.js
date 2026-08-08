@@ -120,14 +120,50 @@ const dentalDemoHeading = document.querySelector("#dental-demo-request-heading")
 
 if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading) {
   const submitButton = dentalDemoForm.querySelector('button[type="submit"]');
+  const clinicWebsite = dentalDemoForm.querySelector('[name="clinicWebsite"]');
+  const clinicWebsiteError = document.querySelector("#demo-clinic-website-error");
   const submitButtonLabel = submitButton.textContent;
   let submitted = false;
+
+  function normalizeClinicWebsite(value) {
+    const trimmedValue = value.trim();
+    return /^https?:\/\//i.test(trimmedValue) ? trimmedValue : `https://${trimmedValue}`;
+  }
+
+  function isValidClinicWebsite(value) {
+    if (!value || /\s/.test(value)) return false;
+
+    try {
+      const website = new URL(normalizeClinicWebsite(value));
+      const domainPattern = /^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,63}|xn--[a-z0-9-]{2,59})$/i;
+      return /^https?:$/.test(website.protocol) && !website.username && !website.password && domainPattern.test(website.hostname);
+    } catch (error) {
+      return false;
+    }
+  }
+
+  function showClinicWebsiteError(show) {
+    clinicWebsiteError.hidden = !show;
+    clinicWebsite.setAttribute("aria-invalid", String(show));
+  }
+
+  clinicWebsite.addEventListener("input", () => showClinicWebsiteError(false));
 
   dentalDemoForm.addEventListener("submit", (event) => {
     if (submitted) {
       event.preventDefault();
       return;
     }
+
+    if (!isValidClinicWebsite(clinicWebsite.value)) {
+      event.preventDefault();
+      showClinicWebsiteError(true);
+      clinicWebsite.focus();
+      return;
+    }
+
+    showClinicWebsiteError(false);
+    clinicWebsite.value = normalizeClinicWebsite(clinicWebsite.value);
 
     if (!dentalDemoForm.checkValidity()) {
       event.preventDefault();
