@@ -116,9 +116,11 @@ document.querySelectorAll(".calendly-trigger").forEach((button) => {
 const dentalDemoForm = document.querySelector("#dental-demo-request-form");
 const dentalDemoFrame = document.querySelector('.demo-response-frame[name="zennora-dental-demo-response"]');
 const dentalDemoSuccess = document.querySelector("#dental-demo-success");
+const dentalDemoHeading = document.querySelector("#dental-demo-request-heading");
 
-if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess) {
+if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading) {
   const submitButton = dentalDemoForm.querySelector('button[type="submit"]');
+  const submitButtonLabel = submitButton.textContent;
   let submitted = false;
 
   dentalDemoForm.addEventListener("submit", (event) => {
@@ -140,6 +142,9 @@ if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess) {
 
   dentalDemoFrame.addEventListener("load", () => {
     if (!submitted) return;
+    submitButton.textContent = submitButtonLabel;
+    submitButton.disabled = false;
+    dentalDemoHeading.hidden = true;
     dentalDemoForm.hidden = true;
     dentalDemoSuccess.hidden = false;
     dentalDemoSuccess.focus({ preventScroll: true });

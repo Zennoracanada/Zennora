@@ -38,10 +38,9 @@
       <a href="#dental-solutions">Workflows</a>
       <a href="#dental-pricing">Pricing</a>
       <a href="#dental-faq">FAQ</a>
-      <a href="#dental-booking">Book a demo</a>
     </nav>
     <div class="nav-actions">
-      <button class="button small calendly-trigger" data-calendly-plan="general" type="button">Book a free demo</button>
+      <a class="button small" href="#dental-demo-form">Request Free Demo</a>
       <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false"><span class="menu-bars" aria-hidden="true"><span></span><span></span><span></span></span></button>
     </div>
   </div>
@@ -56,7 +55,7 @@
         <h1>Turn more patient questions into <span class="gradient-text">booked appointments.</span></h1>
         <p class="hero-copy">Instead of searching through multiple website pages, patients can simply ask Zennora. It provides quick, clinic-approved answers and guides them to the appropriate booking or contact option.</p>
         <div class="button-row">
-          <button class="button calendly-trigger" data-calendly-plan="general" type="button">Book your free dental AI demo ↗</button>
+          <a class="button" href="#dental-demo-form">Request Your Free 3-Day Demo</a>
           <a class="button secondary" href="#dental-solutions">See dental workflows</a>
         </div>
         <div class="micro-trust"><span>✓ New-patient support</span><span>✓ CDCP and insurance FAQs</span><span>✓ Clinical boundaries</span></div>
@@ -74,7 +73,6 @@
             <div class="typing demo-typing" hidden><i></i><i></i><i></i></div>
           </div>
           <div class="demo-actions" data-demo-actions></div>
-          <a class="demo-cta" data-demo-cta href="#dental-launch">Get a personalized version for your clinic →</a>
           <div class="demo-features"><span>✓ Available 24/7</span><span>✓ Clinic-approved answers</span><span>✓ Staff handoff</span></div>
         </div>
         <p class="demo-clarification">Illustrative interactive example using preset scenarios. A clinic-specific version is configured using the client’s approved information and workflows.</p>
@@ -288,7 +286,7 @@
       </div>
       <div class="dental-demo-options">
         <div class="dental-scheduler-card dental-request-card" id="dental-demo-form">
-          <div class="scheduler-heading"><div class="scheduler-icon">✦</div><div><h2>Request a Free 3-Day Demo</h2><p>No meeting required. Send us your clinic website and we'll prepare a personalized Zennora demo for you.</p></div></div>
+          <div class="scheduler-heading" id="dental-demo-request-heading"><div class="scheduler-icon">✦</div><div><h2>Request a Free 3-Day Demo</h2><p>No meeting required. Send us your clinic website and we'll prepare a personalized Zennora demo for you.</p></div></div>
           <form class="dental-demo-form" id="dental-demo-request-form" action="https://script.google.com/macros/s/AKfycbzZKqpsqVa5vloA3mEZyCtQ2etgRFTVx9bAWOUJmhPB6e6LkrWDXVDtLSPTmGL8E-s2/exec" method="post" target="zennora-dental-demo-response" novalidate>
             <div class="field"><label for="demo-contact-name">Contact Name *</label><input id="demo-contact-name" name="contactName" type="text" autocomplete="name" required></div>
             <div class="field"><label for="demo-clinic-name">Clinic Name *</label><input id="demo-clinic-name" name="clinicName" type="text" autocomplete="organization" required></div>
@@ -310,8 +308,8 @@
           <iframe class="demo-response-frame" name="zennora-dental-demo-response" title="Demo request submission response"></iframe>
         </div>
         <div class="dental-secondary-demo">
-          <div><h3>Book a 30-Minute Demo</h3><p>Prefer a guided walkthrough? Meet with us and see how Zennora could work for your clinic.</p></div>
-          <button class="button secondary calendly-trigger" data-calendly-plan="general" type="button">Book a 30-Minute Demo</button>
+          <div><h3>Prefer a guided walkthrough?</h3><p>Book an optional 30-minute walkthrough.</p></div>
+          <button class="button secondary calendly-trigger" data-calendly-plan="general" type="button">Book a 30-Minute Walkthrough</button>
         </div>
       </div>
     </div>
@@ -323,13 +321,13 @@
     <div class="footer-grid">
       <div><a class="logo" href="index.html"><img class="brand-logo" src="assets/zennora-logo.svg" alt="">Zennora</a><p>AI receptionists that help Canadian dental clinics answer patient questions and guide patients toward the right next step.</p></div>
       <div><h2 class="footer-heading">Explore</h2><div class="footer-links"><a href="index.html">Home</a><a href="#dental-solutions">Dental workflows</a><a href="#dental-pricing">Pricing</a><a href="#dental-faq">Dental FAQ</a><a href="privacy.html">Privacy</a></div></div>
-      <div><h2 class="footer-heading">Contact</h2><div class="footer-links"><a href="mailto:hello@zennora.ca" aria-label="Email Zennora at hello@zennora.ca">hello@zennora.ca</a><button class="footer-button calendly-trigger" data-calendly-plan="general" type="button">Book a free demo</button></div></div>
+      <div><h2 class="footer-heading">Contact</h2><div class="footer-links"><a href="mailto:hello@zennora.ca" aria-label="Email Zennora at hello@zennora.ca">hello@zennora.ca</a><button class="footer-button calendly-trigger" data-calendly-plan="general" type="button">Book a 30-Minute Walkthrough</button></div></div>
     </div>
     <div class="canada-love"><span>Made with <span class="canada-heart" aria-label="love">❤️</span> in Canada 🇨🇦</span></div>
     <div class="copyright">© <span data-year></span> Zennora. All rights reserved.</div>
   </div>
 </footer>
 
-<script src="site.js?v=5.4.0" defer></script>
+<script src="site.js?v=5.4.1" defer></script>
 </body>
 </html>
