@@ -13,7 +13,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zennora.ca/dental.html">
   <meta name="twitter:card" content="summary">
-  <link rel="stylesheet" href="style.css?v=5.1.0">
+  <link rel="stylesheet" href="style.css?v=5.4.0">
   <link rel="stylesheet" href="updates.css?v=5.3.0">
   <script type="application/ld+json">
   {
@@ -280,19 +280,39 @@
   <section class="dental-booking-section" id="dental-booking">
     <div class="container dental-booking-grid">
       <div class="dental-booking-copy">
-        <span class="dental-demo-badge">Free 30-minute online demo</span>
-        <h2>See how Zennora could work for <span>your clinic.</span></h2>
-        <p class="dental-booking-lead">We’ll review your website, demonstrate realistic patient conversations and explain a practical setup for your clinic.</p>
-        <ul class="dental-demo-list"><li>Dental-specific conversation examples</li><li>Booking and inquiry workflows</li><li>Implementation and next-step discussion</li></ul>
+        <span class="dental-demo-badge">Personalized free 3-day demo</span>
+        <h2>See Zennora on <span>your clinic website.</span></h2>
+        <p class="dental-booking-lead">No meeting required. Send us your clinic website and we'll prepare a personalized Zennora demo for you.</p>
+        <a class="button dental-request-button" href="#dental-demo-form">Request My Free Demo</a>
         <div class="dental-email-link"><span class="icon-tile">✉</span><p>Prefer email?<br><a href="mailto:hello@zennora.ca?subject=Dental%20AI%20Receptionist%20Inquiry" aria-label="Email Zennora at hello@zennora.ca">hello@zennora.ca</a></p></div>
       </div>
-      <div class="dental-scheduler-card">
-        <div class="scheduler-heading"><div class="scheduler-icon">📅</div><div><h2>Book your free dental AI demo</h2><p>Choose a convenient time for a focused 30-minute walkthrough.</p></div></div>
-        <div class="compact-booking-panel">
-          <div class="meeting-summary"><div class="meeting-clock">30</div><div><strong>Zennora AI Receptionist Demo</strong><span>Online meeting • 30 minutes</span></div></div>
-          <button class="calendly-popup-button calendly-trigger" data-calendly-plan="general" type="button"><span>📅</span><span>Choose a date and time</span><span>→</span></button>
+      <div class="dental-demo-options">
+        <div class="dental-scheduler-card dental-request-card" id="dental-demo-form">
+          <div class="scheduler-heading"><div class="scheduler-icon">✦</div><div><h2>Request a Free 3-Day Demo</h2><p>No meeting required. Send us your clinic website and we'll prepare a personalized Zennora demo for you.</p></div></div>
+          <form class="dental-demo-form" id="dental-demo-request-form" action="https://script.google.com/macros/s/AKfycbzZKqpsqVa5vloA3mEZyCtQ2etgRFTVx9bAWOUJmhPB6e6LkrWDXVDtLSPTmGL8E-s2/exec" method="post" target="zennora-dental-demo-response" novalidate>
+            <div class="field"><label for="demo-contact-name">Contact Name *</label><input id="demo-contact-name" name="contactName" type="text" autocomplete="name" required></div>
+            <div class="field"><label for="demo-clinic-name">Clinic Name *</label><input id="demo-clinic-name" name="clinicName" type="text" autocomplete="organization" required></div>
+            <div class="field"><label for="demo-clinic-website">Clinic Website *</label><input id="demo-clinic-website" name="clinicWebsite" type="url" inputmode="url" autocomplete="url" placeholder="https://yourclinic.ca" required></div>
+            <div class="field"><label for="demo-work-email">Work Email *</label><input id="demo-work-email" name="workEmail" type="email" inputmode="email" autocomplete="email" required></div>
+            <div class="field"><label for="demo-phone">Phone <span>(optional)</span></label><input id="demo-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
+            <div class="field"><label for="demo-help-with">What would you like Zennora to help with? <span>(optional)</span></label><textarea id="demo-help-with" name="helpWith"></textarea></div>
+            <div class="demo-honeypot" aria-hidden="true"><label for="demo-company-website">Company Website</label><input id="demo-company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off"></div>
+            <p class="form-note">Please don't include patient, medical, payment, or other sensitive information. We'll use the details above only to prepare and contact you about your Zennora demo.</p>
+            <button class="button dental-demo-submit" type="submit">Request My Free Demo</button>
+          </form>
+          <div class="dental-demo-success" id="dental-demo-success" role="status" tabindex="-1" hidden>
+            <div class="success-mark" aria-hidden="true">✓</div>
+            <h2>Your demo request has been received!</h2>
+            <p>Thanks for your interest in Zennora. We'll review your clinic website and email your personalized demo when it's ready.</p>
+            <p><strong>Your free 3-day demo begins when we send you access — not when you submit this request.</strong></p>
+            <p>No meeting is required.</p>
+          </div>
+          <iframe class="demo-response-frame" name="zennora-dental-demo-response" title="Demo request submission response"></iframe>
         </div>
-        <div class="scheduler-trust"><span>✓ Free consultation</span><span>✓ No obligation</span><span>✓ Tailored to your clinic</span></div>
+        <div class="dental-secondary-demo">
+          <div><h3>Book a 30-Minute Demo</h3><p>Prefer a guided walkthrough? Meet with us and see how Zennora could work for your clinic.</p></div>
+          <button class="button secondary calendly-trigger" data-calendly-plan="general" type="button">Book a 30-Minute Demo</button>
+        </div>
       </div>
     </div>
   </section>
@@ -310,6 +330,6 @@
   </div>
 </footer>
 
-<script src="site.js?v=5.3.0" defer></script>
+<script src="site.js?v=5.4.0" defer></script>
 </body>
 </html>
