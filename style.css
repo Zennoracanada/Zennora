@@ -234,6 +234,7 @@ nav a:hover, nav a:focus-visible { color: var(--primary); }
 .dental-demo-options { min-width: 0; display: grid; gap: 20px; }
 .dental-request-card { scroll-margin-top: 96px; }
 .dental-request-button { margin: 28px 0; background: linear-gradient(135deg,#fff,#dfffee); color: #123c77; box-shadow: 0 14px 34px rgba(3,12,49,.24); }
+.dental-request-button[aria-disabled="true"] { pointer-events: none; background: rgba(226,250,239,.18); color: #9effd8; box-shadow: none; opacity: .82; }
 .dental-demo-form { display: grid; gap: 16px; padding: 4px 30px 30px; }
 .dental-demo-form .field label { color: var(--navy); }
 .dental-demo-form .field label span { color: var(--muted); font-size: .82rem; font-weight: 600; }
