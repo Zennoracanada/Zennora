@@ -1,6 +1,27 @@
 "use strict";
 
 
+// Google Analytics 4
+(function initGoogleAnalytics() {
+  const measurementId = "G-49EVPN51DB";
+
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function () {
+    window.dataLayer.push(arguments);
+  };
+
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId);
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src =
+    "https://www.googletagmanager.com/gtag/js?id=" +
+    encodeURIComponent(measurementId);
+
+  document.head.appendChild(script);
+})();
+
 
 const SITE_CONFIG = Object.freeze({
   calendlyBaseUrl: "https://calendly.com/zennora/30min?hide_gdpr_banner=1",
