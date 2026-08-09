@@ -346,3 +346,10 @@ const setHeaderState = () => {
 
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
+
+if (document.body.dataset.demoType === "general") {
+  const homepageDemoScript = document.createElement("script");
+  homepageDemoScript.src = "homepage-demo.js?v=1";
+  homepageDemoScript.async = false;
+  document.body.appendChild(homepageDemoScript);
+}
