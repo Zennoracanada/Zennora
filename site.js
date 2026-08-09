@@ -4,6 +4,25 @@
 // Google Analytics 4
 (function initGoogleAnalytics() {
   const measurementId = "G-49EVPN51DB";
+  const ownerOptOutKey = "zennora_ga4_owner_optout";
+  const ownerParameter = "zennora_owner";
+  const pageUrl = new URL(window.location.href);
+  const ownerMode = pageUrl.searchParams.get(ownerParameter);
+
+  if (ownerMode === "1") {
+    window.localStorage.setItem(ownerOptOutKey, "1");
+  } else if (ownerMode === "0") {
+    window.localStorage.removeItem(ownerOptOutKey);
+  }
+
+  if (ownerMode === "1" || ownerMode === "0") {
+    pageUrl.searchParams.delete(ownerParameter);
+    window.history.replaceState(null, "", `${pageUrl.pathname}${pageUrl.search}${pageUrl.hash}`);
+  }
+
+  const analyticsDisabled = window.localStorage.getItem(ownerOptOutKey) === "1";
+  window[`ga-disable-${measurementId}`] = analyticsDisabled;
+  if (analyticsDisabled) return;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
