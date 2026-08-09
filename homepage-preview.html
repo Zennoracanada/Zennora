@@ -16,7 +16,7 @@
       })
       .then((html) => {
         const siteScript = '<script src="site.js?v=5.3.1" defer><\\/script>';
-        const previewScript = `${siteScript}<script src="homepage-preview.js?v=1" defer><\\/script><script src="homepage-preview-fix.js?v=1" defer><\\/script>`;
+        const previewScript = `${siteScript}<script src="homepage-preview.js?v=2" defer><\\/script><script src="homepage-preview-fix.js?v=2" defer><\\/script>`;
         const previewHtml = html
           .replace('<meta name="twitter:card" content="summary">', '<meta name="twitter:card" content="summary"><meta name="robots" content="noindex,nofollow">')
           .replace(siteScript, previewScript);
