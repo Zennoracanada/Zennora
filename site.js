@@ -148,6 +148,14 @@ async function openCalendly(event) {
   const requestedPlan = trigger?.dataset?.calendlyPlan || "general";
   const calendlyUrl = buildCalendlyUrl(requestedPlan);
 
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "calendly_click", {
+      page_type: document.body.dataset.demoType === "dental" ? "dental" : "homepage",
+      calendly_plan: requestedPlan,
+      button_text: trigger?.textContent?.trim() || "Calendly"
+    });
+  }
+
   try {
     const calendly = await loadCalendly();
     if (calendly && typeof calendly.initPopupWidget === "function") {
@@ -177,6 +185,7 @@ if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading)
   const clinicWebsiteError = document.querySelector("#demo-clinic-website-error");
   const submitButtonLabel = submitButton.textContent;
   let submitted = false;
+  let leadTracked = false;
 
   function normalizeClinicWebsite(value) {
     const trimmedValue = value.trim();
@@ -231,6 +240,13 @@ if (dentalDemoForm && dentalDemoFrame && dentalDemoSuccess && dentalDemoHeading)
 
   dentalDemoFrame.addEventListener("load", () => {
     if (!submitted) return;
+    if (!leadTracked && typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        lead_source: "dental",
+        form_name: "dental_demo_request"
+      });
+      leadTracked = true;
+    }
     submitButton.textContent = submitButtonLabel;
     submitButton.disabled = false;
     dentalDemoHeading.hidden = true;
@@ -401,7 +417,7 @@ window.addEventListener("scroll", setHeaderState, { passive: true });
 
 if (document.body.dataset.demoType === "general") {
   const homepageDemoScript = document.createElement("script");
-  homepageDemoScript.src = "homepage-demo.js?v=1";
+  homepageDemoScript.src = "homepage-demo.js?v=2";
   homepageDemoScript.async = false;
   document.body.appendChild(homepageDemoScript);
 }

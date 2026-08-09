@@ -93,6 +93,7 @@
   const websiteError = form.querySelector("#general-website-error");
   const submitButton = form.querySelector('button[type="submit"]');
   let submitted = false;
+  let leadTracked = false;
 
   function normalizeWebsite(value) {
     const valueTrimmed = value.trim();
@@ -140,6 +141,13 @@
 
   frame.addEventListener("load", () => {
     if (!submitted) return;
+    if (!leadTracked && typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        lead_source: "homepage",
+        form_name: "general_demo_request"
+      });
+      leadTracked = true;
+    }
     form.hidden = true;
     success.hidden = false;
     success.classList.add("visible");
