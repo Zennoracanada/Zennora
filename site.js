@@ -4,6 +4,35 @@
 // Google Analytics 4
 (function initGoogleAnalytics() {
   const measurementId = "G-49EVPN51DB";
+  const ownerOptOutKey = "zennora_ga4_owner_optout";
+  const ownerParameter = "zennora_owner";
+  const pageUrl = new URL(window.location.href);
+  const ownerMode = pageUrl.searchParams.get(ownerParameter);
+  let analyticsDisabled = ownerMode === "1";
+
+  try {
+    if (ownerMode === "1") {
+      window.localStorage.setItem(ownerOptOutKey, "1");
+    } else if (ownerMode === "0") {
+      window.localStorage.removeItem(ownerOptOutKey);
+    }
+
+    analyticsDisabled = window.localStorage.getItem(ownerOptOutKey) === "1";
+  } catch (error) {
+    analyticsDisabled = ownerMode === "1";
+  }
+
+  if (ownerMode === "1" || ownerMode === "0") {
+    pageUrl.searchParams.delete(ownerParameter);
+    try {
+      window.history.replaceState(null, "", `${pageUrl.pathname}${pageUrl.search}${pageUrl.hash}`);
+    } catch (error) {
+      // The opt-out still works even if the browser prevents URL cleanup.
+    }
+  }
+
+  window[`ga-disable-${measurementId}`] = analyticsDisabled;
+  if (analyticsDisabled) return;
 
   window.dataLayer = window.dataLayer || [];
   window.gtag = window.gtag || function () {
