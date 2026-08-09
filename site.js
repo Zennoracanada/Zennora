@@ -8,19 +8,29 @@
   const ownerParameter = "zennora_owner";
   const pageUrl = new URL(window.location.href);
   const ownerMode = pageUrl.searchParams.get(ownerParameter);
+  let analyticsDisabled = ownerMode === "1";
 
-  if (ownerMode === "1") {
-    window.localStorage.setItem(ownerOptOutKey, "1");
-  } else if (ownerMode === "0") {
-    window.localStorage.removeItem(ownerOptOutKey);
+  try {
+    if (ownerMode === "1") {
+      window.localStorage.setItem(ownerOptOutKey, "1");
+    } else if (ownerMode === "0") {
+      window.localStorage.removeItem(ownerOptOutKey);
+    }
+
+    analyticsDisabled = window.localStorage.getItem(ownerOptOutKey) === "1";
+  } catch (error) {
+    analyticsDisabled = ownerMode === "1";
   }
 
   if (ownerMode === "1" || ownerMode === "0") {
     pageUrl.searchParams.delete(ownerParameter);
-    window.history.replaceState(null, "", `${pageUrl.pathname}${pageUrl.search}${pageUrl.hash}`);
+    try {
+      window.history.replaceState(null, "", `${pageUrl.pathname}${pageUrl.search}${pageUrl.hash}`);
+    } catch (error) {
+      // The opt-out still works even if the browser prevents URL cleanup.
+    }
   }
 
-  const analyticsDisabled = window.localStorage.getItem(ownerOptOutKey) === "1";
   window[`ga-disable-${measurementId}`] = analyticsDisabled;
   if (analyticsDisabled) return;
 
