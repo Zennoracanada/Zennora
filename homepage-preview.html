@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Zennora Homepage Preview</title>
+</head>
+<body>
+  <p style="font-family:system-ui,sans-serif;padding:24px">Loading Zennora homepage preview…</p>
+  <script>
+    fetch('index.html', { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error('Could not load homepage');
+        return response.text();
+      })
+      .then((html) => {
+        const siteScript = '<script src="site.js?v=5.3.1" defer><\\/script>';
+        const previewScript = `${siteScript}<script src="homepage-preview.js?v=1" defer><\\/script>`;
+        const previewHtml = html
+          .replace('<meta name="twitter:card" content="summary">', '<meta name="twitter:card" content="summary"><meta name="robots" content="noindex,nofollow">')
+          .replace(siteScript, previewScript);
+        document.open();
+        document.write(previewHtml);
+        document.close();
+      })
+      .catch((error) => {
+        document.body.innerHTML = `<p style="font-family:system-ui,sans-serif;padding:24px">Preview failed to load: ${error.message}</p>`;
+      });
+  </script>
+</body>
+</html>
