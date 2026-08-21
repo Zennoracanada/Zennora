@@ -5,89 +5,47 @@
 
   const scenariosByType = {
     physio: [
-      {
-        label: "New patient",
-        question: "I'm a new patient. How do I get started?",
-        answer: "I can explain the clinic's approved new-patient process and guide you to the right booking or contact option."
-      },
-      {
-        label: "Referral",
-        question: "Do I need a doctor's referral for physiotherapy?",
-        answer: "I can share the clinic's general referral information. Requirements can vary by insurer or program, so plan-specific questions should be confirmed with the clinic or provider."
-      },
-      {
-        label: "Direct billing",
-        question: "Do you direct bill my insurance?",
-        answer: "I can explain the clinic's approved direct-billing process and direct coverage-specific questions to the front desk."
-      },
-      {
-        label: "ICBC / WorkSafe",
-        question: "Do you see ICBC or WorkSafe patients?",
-        answer: "I can confirm the programs the clinic says it supports and guide you to the clinic's approved intake or booking process."
-      },
-      {
-        label: "Services",
-        question: "Which treatment should I book for my injury?",
-        answer: "I can explain the services the clinic offers, but I won't diagnose your injury. I can help you contact the clinic so the appropriate professional can guide you."
-      },
-      {
-        label: "Book appointment",
-        question: "Can I book an appointment online?",
-        answer: "Yes. I can guide you to the clinic's booking page or approved contact option."
-      },
-      {
-        label: "What to bring",
-        question: "What should I bring to my first appointment?",
-        answer: "I can share the clinic's approved checklist, such as identification, referral or claim information when applicable, and any forms the clinic asks patients to complete."
-      },
-      {
-        label: "Urgent concern",
-        question: "My pain suddenly became severe. What should I do?",
-        answer: "I can share the clinic's approved urgent-contact guidance, but I can't diagnose symptoms. For severe or emergency symptoms, follow appropriate emergency-care guidance."
-      }
+      { label: "New patient", question: "I'm a new patient. How do I get started?", answer: "I can explain the clinic's approved new-patient process and guide you to the right booking or contact option." },
+      { label: "Referral", question: "Do I need a doctor's referral for physiotherapy?", answer: "I can share the clinic's general referral information. Requirements can vary by insurer or program, so plan-specific questions should be confirmed with the clinic or provider." },
+      { label: "Direct billing", question: "Do you direct bill my insurance?", answer: "I can explain the clinic's approved direct-billing process and direct coverage-specific questions to the front desk." },
+      { label: "ICBC / WorkSafe", question: "Do you see ICBC or WorkSafe patients?", answer: "I can confirm the programs the clinic says it supports and guide you to the clinic's approved intake or booking process." },
+      { label: "Services", question: "Which treatment should I book for my injury?", answer: "I can explain the services the clinic offers, but I won't diagnose your injury. I can help you contact the clinic so the appropriate professional can guide you." },
+      { label: "Book appointment", question: "Can I book an appointment online?", answer: "Yes. I can guide you to the clinic's booking page or approved contact option." },
+      { label: "What to bring", question: "What should I bring to my first appointment?", answer: "I can share the clinic's approved checklist, such as identification, referral or claim information when applicable, and any forms the clinic asks patients to complete." },
+      { label: "Urgent concern", question: "My pain suddenly became severe. What should I do?", answer: "I can share the clinic's approved urgent-contact guidance, but I can't diagnose symptoms. For severe or emergency symptoms, follow appropriate emergency-care guidance." }
     ],
 
     automotive: [
-      {
-        label: "Book service",
-        question: "Can I book my car in for service?",
-        answer: "Yes. I can guide you to the shop's booking page, phone number or preferred service-request process."
-      },
-      {
-        label: "Oil change",
-        question: "Do you offer oil changes?",
-        answer: "I can confirm the services listed by the shop and guide you to booking or requesting more information."
-      },
-      {
-        label: "Tires",
-        question: "Can I book a tire change?",
-        answer: "I can share the shop's tire-service information and direct you to its preferred booking or quote option."
-      },
-      {
-        label: "Brake service",
-        question: "Do you repair brakes?",
-        answer: "I can confirm whether brake inspection or repair is listed among the shop's services and help you take the next step."
-      },
-      {
-        label: "Warning light",
-        question: "My check-engine light is on. What's wrong?",
-        answer: "I can't diagnose the vehicle from a website conversation, but I can explain the shop's diagnostic service and help you arrange an inspection."
-      },
-      {
-        label: "Request quote",
-        question: "Can I get a quote before I book?",
-        answer: "I can guide you to the shop's quote process or collect selected vehicle and contact details where that workflow is configured."
-      },
-      {
-        label: "Drop-off",
-        question: "Can I drop off my vehicle after hours?",
-        answer: "I can share the shop's approved drop-off instructions, hours and contact information when those details are available."
-      },
-      {
-        label: "Price question",
-        question: "How much will this repair cost?",
-        answer: "I can share published pricing or estimate information if the shop provides it, but final repair costs may depend on inspection, parts and approval from the shop."
-      }
+      { label: "Book service", question: "Can I book my car in for service?", answer: "Yes. I can guide you to the shop's booking page, phone number or preferred service-request process." },
+      { label: "Oil change", question: "Do you offer oil changes?", answer: "I can confirm the services listed by the shop and guide you to booking or requesting more information." },
+      { label: "Tires", question: "Can I book a tire change?", answer: "I can share the shop's tire-service information and direct you to its preferred booking or quote option." },
+      { label: "Brake service", question: "Do you repair brakes?", answer: "I can confirm whether brake inspection or repair is listed among the shop's services and help you take the next step." },
+      { label: "Warning light", question: "My check-engine light is on. What's wrong?", answer: "I can't diagnose the vehicle from a website conversation, but I can explain the shop's diagnostic service and help you arrange an inspection." },
+      { label: "Request quote", question: "Can I get a quote before I book?", answer: "I can guide you to the shop's quote process or collect selected vehicle and contact details where that workflow is configured." },
+      { label: "Drop-off", question: "Can I drop off my vehicle after hours?", answer: "I can share the shop's approved drop-off instructions, hours and contact information when those details are available." },
+      { label: "Price question", question: "How much will this repair cost?", answer: "I can share published pricing or estimate information if the shop provides it, but final repair costs may depend on inspection, parts and approval from the shop." }
+    ],
+
+    plumbing: [
+      { label: "Emergency service", question: "Do you offer emergency plumbing service?", answer: "I can share the company's approved emergency-service availability and direct you to the fastest contact option." },
+      { label: "Leaking pipe", question: "I have a leaking pipe. Can someone come today?", answer: "I can share the company's approved service-request process and available urgent-contact options without trying to diagnose the issue." },
+      { label: "Blocked drain", question: "Do you clear blocked drains?", answer: "I can confirm whether drain cleaning is listed among the company's services and guide you to the right booking or call option." },
+      { label: "Water heater", question: "Do you repair or replace water heaters?", answer: "I can explain the company's published water-heater services and guide you toward a service request or estimate." },
+      { label: "Service area", question: "Do you service my area?", answer: "I can check the company's published service cities or regions and tell you the approved next step." },
+      { label: "Request quote", question: "Can I get a plumbing quote?", answer: "I can guide you to the company's quote form or collect selected inquiry details where that workflow is configured." },
+      { label: "Price question", question: "How much will the repair cost?", answer: "I can share published pricing or estimate information when available, but final pricing may depend on an on-site assessment and approved scope." },
+      { label: "After hours", question: "Can I leave a service request after hours?", answer: "Yes. I can guide you to the company's approved after-hours contact or inquiry process." }
+    ],
+
+    hvac: [
+      { label: "AC not cooling", question: "My air conditioner is running but not cooling. Can someone help?", answer: "I can explain the company's approved repair-service options and guide you to the fastest booking or contact method." },
+      { label: "Furnace repair", question: "Do you repair furnaces?", answer: "I can confirm the heating-repair services listed by the company and guide you to book or call." },
+      { label: "Heat pumps", question: "Do you install heat pumps?", answer: "I can confirm whether heat-pump installation is offered and guide you toward the company's estimate process." },
+      { label: "Installation estimate", question: "Can I get an estimate for a new HVAC system?", answer: "I can guide you to the company's estimate process or collect selected project and contact details where configured." },
+      { label: "Maintenance plan", question: "Do you offer maintenance plans?", answer: "I can explain published maintenance, tune-up or membership options using company-approved information." },
+      { label: "Service area", question: "Do you service my city?", answer: "I can answer using the company's published service area and direct you to the correct booking or contact option." },
+      { label: "Rebates", question: "Are there rebates for a heat pump?", answer: "I can share company-approved general rebate information and direct you to the appropriate official or company resource for current eligibility details." },
+      { label: "Urgent service", question: "We have no heat. Can someone come today?", answer: "I can share the company's approved urgent-service information and contact pathway without trying to diagnose the equipment remotely." }
     ]
   };
 
