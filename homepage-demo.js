@@ -30,12 +30,28 @@
   if (firstLaunchBenefit) firstLaunchBenefit.textContent = "✓ 3-day personalized demo";
 
   // Turn the existing industry cards into dedicated solution links without
-  // changing the underlying homepage layout.
+  // requiring a homepage-layout rebuild.
   document.querySelectorAll("#industries .industry-card").forEach((card) => {
     const heading = card.querySelector("h3");
     if (!heading || card.tagName === "A") return;
 
     const title = heading.textContent.trim().toLowerCase();
+
+    if (title === "home services") {
+      const plumbing = document.createElement("a");
+      plumbing.className = `${card.className} featured`;
+      plumbing.href = "plumbing.html";
+      plumbing.innerHTML = '<h3>Plumbing</h3><p>Answer service questions, route urgent inquiries and guide visitors toward a call or quote request.</p><b>Explore plumbing solution →</b>';
+
+      const hvac = document.createElement("a");
+      hvac.className = `${card.className} featured`;
+      hvac.href = "hvac.html";
+      hvac.innerHTML = '<h3>HVAC</h3><p>Support heating and cooling questions, service requests, maintenance FAQs and installation estimates.</p><b>Explore HVAC solution →</b>';
+
+      card.replaceWith(plumbing, hvac);
+      return;
+    }
+
     let href = "";
     let label = "";
 
