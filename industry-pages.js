@@ -1,0 +1,269 @@
+"use strict";
+
+(function setupIndustryPage() {
+  const type = document.body.dataset.demoType || "";
+
+  const scenariosByType = {
+    physio: [
+      {
+        label: "New patient",
+        question: "I'm a new patient. How do I get started?",
+        answer: "I can explain the clinic's approved new-patient process and guide you to the right booking or contact option."
+      },
+      {
+        label: "Referral",
+        question: "Do I need a doctor's referral for physiotherapy?",
+        answer: "I can share the clinic's general referral information. Requirements can vary by insurer or program, so plan-specific questions should be confirmed with the clinic or provider."
+      },
+      {
+        label: "Direct billing",
+        question: "Do you direct bill my insurance?",
+        answer: "I can explain the clinic's approved direct-billing process and direct coverage-specific questions to the front desk."
+      },
+      {
+        label: "ICBC / WorkSafe",
+        question: "Do you see ICBC or WorkSafe patients?",
+        answer: "I can confirm the programs the clinic says it supports and guide you to the clinic's approved intake or booking process."
+      },
+      {
+        label: "Services",
+        question: "Which treatment should I book for my injury?",
+        answer: "I can explain the services the clinic offers, but I won't diagnose your injury. I can help you contact the clinic so the appropriate professional can guide you."
+      },
+      {
+        label: "Book appointment",
+        question: "Can I book an appointment online?",
+        answer: "Yes. I can guide you to the clinic's booking page or approved contact option."
+      },
+      {
+        label: "What to bring",
+        question: "What should I bring to my first appointment?",
+        answer: "I can share the clinic's approved checklist, such as identification, referral or claim information when applicable, and any forms the clinic asks patients to complete."
+      },
+      {
+        label: "Urgent concern",
+        question: "My pain suddenly became severe. What should I do?",
+        answer: "I can share the clinic's approved urgent-contact guidance, but I can't diagnose symptoms. For severe or emergency symptoms, follow appropriate emergency-care guidance."
+      }
+    ],
+
+    automotive: [
+      {
+        label: "Book service",
+        question: "Can I book my car in for service?",
+        answer: "Yes. I can guide you to the shop's booking page, phone number or preferred service-request process."
+      },
+      {
+        label: "Oil change",
+        question: "Do you offer oil changes?",
+        answer: "I can confirm the services listed by the shop and guide you to booking or requesting more information."
+      },
+      {
+        label: "Tires",
+        question: "Can I book a tire change?",
+        answer: "I can share the shop's tire-service information and direct you to its preferred booking or quote option."
+      },
+      {
+        label: "Brake service",
+        question: "Do you repair brakes?",
+        answer: "I can confirm whether brake inspection or repair is listed among the shop's services and help you take the next step."
+      },
+      {
+        label: "Warning light",
+        question: "My check-engine light is on. What's wrong?",
+        answer: "I can't diagnose the vehicle from a website conversation, but I can explain the shop's diagnostic service and help you arrange an inspection."
+      },
+      {
+        label: "Request quote",
+        question: "Can I get a quote before I book?",
+        answer: "I can guide you to the shop's quote process or collect selected vehicle and contact details where that workflow is configured."
+      },
+      {
+        label: "Drop-off",
+        question: "Can I drop off my vehicle after hours?",
+        answer: "I can share the shop's approved drop-off instructions, hours and contact information when those details are available."
+      },
+      {
+        label: "Price question",
+        question: "How much will this repair cost?",
+        answer: "I can share published pricing or estimate information if the shop provides it, but final repair costs may depend on inspection, parts and approval from the shop."
+      }
+    ]
+  };
+
+  function initializeIndustryDemo(demo) {
+    const scenarios = scenariosByType[type];
+    if (!scenarios || !scenarios.length) return;
+
+    const actions = demo.querySelector("[data-industry-demo-actions]");
+    const question = demo.querySelector("[data-industry-demo-question]");
+    const answer = demo.querySelector("[data-industry-demo-answer]");
+    const typing = demo.querySelector(".demo-typing");
+
+    if (!actions || !question || !answer || !typing) return;
+
+    let activeIndex = 0;
+    let autoTimer = null;
+    let switchTimer = null;
+    let userInteracted = false;
+
+    const buttons = scenarios.map((scenario, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "demo-chip";
+      button.textContent = scenario.label;
+      button.setAttribute("aria-pressed", index === 0 ? "true" : "false");
+      button.addEventListener("click", () => {
+        userInteracted = true;
+        if (autoTimer) window.clearInterval(autoTimer);
+        showScenario(index);
+      });
+      actions.appendChild(button);
+      return button;
+    });
+
+    function showScenario(index, immediate = false) {
+      if (switchTimer) window.clearTimeout(switchTimer);
+      activeIndex = index;
+
+      buttons.forEach((button, buttonIndex) => {
+        const active = buttonIndex === index;
+        button.classList.toggle("active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      const scenario = scenarios[index];
+      question.classList.add("switching");
+      answer.classList.add("switching");
+      answer.hidden = true;
+      typing.hidden = false;
+
+      switchTimer = window.setTimeout(() => {
+        question.textContent = scenario.question;
+        answer.textContent = scenario.answer;
+        question.classList.remove("switching");
+
+        window.setTimeout(() => {
+          typing.hidden = true;
+          answer.hidden = false;
+          answer.classList.remove("switching");
+        }, immediate ? 0 : 650);
+      }, immediate ? 0 : 350);
+    }
+
+    showScenario(0, true);
+
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      autoTimer = window.setInterval(() => {
+        if (!userInteracted && document.visibilityState === "visible") {
+          showScenario((activeIndex + 1) % scenarios.length);
+        }
+      }, 7000);
+    }
+
+    demo.addEventListener("pointerenter", () => {
+      if (autoTimer) window.clearInterval(autoTimer);
+    }, { once: true });
+  }
+
+  document.querySelectorAll("[data-industry-demo]").forEach(initializeIndustryDemo);
+
+  const form = document.querySelector("[data-industry-demo-form]");
+  const frame = document.querySelector("[data-industry-demo-frame]");
+  const success = document.querySelector("[data-industry-demo-success]");
+  const heading = document.querySelector("[data-industry-demo-heading]");
+  const requestButtons = document.querySelectorAll("[data-industry-request-button]");
+
+  if (!form || !frame || !success || !heading) return;
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  const websiteField = form.querySelector('[name="clinicWebsite"]');
+  const websiteError = form.querySelector("[data-industry-website-error]");
+  const submitButtonLabel = submitButton ? submitButton.textContent : "Request My Free Demo";
+  let submitted = false;
+  let leadTracked = false;
+
+  function normalizeWebsite(value) {
+    const trimmed = String(value || "").trim();
+    return /^https?:\/\//i.test(trimmed) ? trimmed : `https://${trimmed}`;
+  }
+
+  function validWebsite(value) {
+    if (!value || /\s/.test(value)) return false;
+
+    try {
+      const url = new URL(normalizeWebsite(value));
+      const domainPattern = /^(?=.{1,253}$)(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+(?:[a-z]{2,63}|xn--[a-z0-9-]{2,59})$/i;
+      return /^https?:$/.test(url.protocol) && !url.username && !url.password && domainPattern.test(url.hostname);
+    } catch (_) {
+      return false;
+    }
+  }
+
+  function showWebsiteError(show) {
+    if (websiteError) websiteError.hidden = !show;
+    if (websiteField) websiteField.setAttribute("aria-invalid", String(show));
+  }
+
+  if (websiteField) {
+    websiteField.addEventListener("input", () => showWebsiteError(false));
+  }
+
+  form.addEventListener("submit", (event) => {
+    if (submitted) {
+      event.preventDefault();
+      return;
+    }
+
+    if (!websiteField || !validWebsite(websiteField.value)) {
+      event.preventDefault();
+      showWebsiteError(true);
+      if (websiteField) websiteField.focus();
+      return;
+    }
+
+    showWebsiteError(false);
+    websiteField.value = normalizeWebsite(websiteField.value);
+
+    if (!form.checkValidity()) {
+      event.preventDefault();
+      form.reportValidity();
+      return;
+    }
+
+    submitted = true;
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+    }
+  });
+
+  frame.addEventListener("load", () => {
+    if (!submitted) return;
+
+    if (!leadTracked && typeof window.gtag === "function") {
+      window.gtag("event", "generate_lead", {
+        lead_source: type || "industry",
+        form_name: `${type || "industry"}_demo_request`
+      });
+      leadTracked = true;
+    }
+
+    if (submitButton) {
+      submitButton.textContent = submitButtonLabel;
+      submitButton.disabled = false;
+    }
+
+    heading.hidden = true;
+    form.hidden = true;
+    success.hidden = false;
+
+    requestButtons.forEach((button) => {
+      button.textContent = "✓ Demo Requested";
+      button.removeAttribute("href");
+      button.setAttribute("aria-disabled", "true");
+    });
+
+    success.focus({ preventScroll: true });
+  });
+})();
