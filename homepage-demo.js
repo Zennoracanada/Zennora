@@ -29,6 +29,34 @@
   const firstLaunchBenefit = document.querySelector(".launch-benefits span");
   if (firstLaunchBenefit) firstLaunchBenefit.textContent = "✓ 3-day personalized demo";
 
+  // Turn the existing industry cards into dedicated solution links without
+  // changing the underlying homepage layout.
+  document.querySelectorAll("#industries .industry-card").forEach((card) => {
+    const heading = card.querySelector("h3");
+    if (!heading || card.tagName === "A") return;
+
+    const title = heading.textContent.trim().toLowerCase();
+    let href = "";
+    let label = "";
+
+    if (title === "health and wellness") {
+      href = "physio.html";
+      heading.textContent = "Physiotherapy & rehab";
+      label = "Explore physio solution →";
+    } else if (title === "automotive services") {
+      href = "automotive.html";
+      label = "Explore automotive solution →";
+    }
+
+    if (!href) return;
+
+    const link = document.createElement("a");
+    link.className = `${card.className} featured`;
+    link.href = href;
+    link.innerHTML = card.innerHTML + `<b>${label}</b>`;
+    card.replaceWith(link);
+  });
+
   const booking = document.querySelector("#booking");
   if (booking) {
     const eyebrow = booking.querySelector(".eyebrow");
