@@ -108,11 +108,11 @@
   form.innerHTML = `
     <div class="field"><label for="general-contact-name">Contact Name *</label><input id="general-contact-name" name="contactName" type="text" autocomplete="name" required></div>
     <div class="field"><label for="general-business-name">Business Name *</label><input id="general-business-name" name="clinicName" type="text" autocomplete="organization" required></div>
+    <div class="field"><label for="general-industry">Industry *</label><select id="general-industry" name="source" required><option value="" selected disabled>Select your industry</option><option value="Dental">Dental</option><option value="Physiotherapy / Rehab">Physiotherapy / Rehab</option><option value="Plumbing">Plumbing</option><option value="HVAC">HVAC</option><option value="Automotive Service">Automotive Service</option><option value="Other">Other</option></select></div>
     <div class="field"><label for="general-website">Website *</label><input id="general-website" name="clinicWebsite" type="text" inputmode="url" autocomplete="url" placeholder="examplebusiness.ca" required><p class="field-error" id="general-website-error" aria-live="polite" hidden>Please enter a valid website, for example: examplebusiness.ca</p></div>
     <div class="field"><label for="general-work-email">Work Email *</label><input id="general-work-email" name="workEmail" type="email" inputmode="email" autocomplete="email" required></div>
     <div class="field"><label for="general-phone">Phone <span>(optional)</span></label><input id="general-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel"></div>
     <div class="field"><label for="general-help-with">What would you like Zennora to help with? <span>(optional)</span></label><textarea id="general-help-with" name="helpWith"></textarea></div>
-    <input type="hidden" name="source" value="Homepage">
     <div class="demo-honeypot" aria-hidden="true"><label for="general-company-website">Company Website</label><input id="general-company-website" name="companyWebsite" type="text" tabindex="-1" autocomplete="off"></div>
     <p class="form-note">Please don't include medical, payment, or other sensitive information. We'll use the details above only to prepare and contact you about your Zennora demo.</p>
     <button class="button" type="submit">Request My Free Demo</button>`;
