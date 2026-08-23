@@ -5,6 +5,50 @@
 
   const demoEndpoint = "https://script.google.com/macros/s/AKfycbzZKqpsqVa5vloA3mEZyCtQ2etgRFTVx9bAWOUJmhPB6e6LkrWDXVDtLSPTmGL8E-s2/exec";
 
+  function applyHomepageTrustUpdates() {
+    const heroHeading = document.querySelector(".hero-content h1");
+    const heroCopy = document.querySelector(".hero-content .hero-copy");
+    const trustItems = document.querySelectorAll(".hero-content .micro-trust span");
+
+    if (heroHeading) {
+      heroHeading.innerHTML = 'Turn website questions into <span class="gradient-text">bookings, calls and quote requests.</span>';
+    }
+    if (heroCopy) {
+      heroCopy.textContent = "Zennora answers repetitive customer questions 24/7 and guides visitors toward booking, calling or requesting a quote—without adding more work to your team.";
+    }
+    if (trustItems[0]) trustItems[0].textContent = "✓ Built in Canada";
+    if (trustItems[1]) trustItems[1].textContent = "✓ Works with your existing website";
+    if (trustItems[2]) trustItems[2].textContent = "✓ Business-approved answers";
+
+    const setupPanel = document.querySelector(".setup-fee-panel");
+    if (setupPanel) {
+      const label = setupPanel.querySelector(".setup-label");
+      const price = setupPanel.querySelector("strong");
+      const copy = setupPanel.querySelector("p");
+      if (label) label.textContent = "Setup and onboarding";
+      if (price) price.textContent = "No setup fee";
+      if (copy) copy.textContent = "Knowledge-base setup, configuration, testing, booking/contact setup, installation guidance and launch support are included.";
+    }
+
+    const launch = document.querySelector("#launch-offer");
+    if (launch) {
+      const eyebrow = launch.querySelector(".eyebrow.light");
+      const heading = launch.querySelector("h2");
+      const copy = launch.querySelector("p");
+      const benefits = launch.querySelectorAll(".launch-benefits span");
+      if (eyebrow) eyebrow.textContent = "Personalized 3-day demo";
+      if (heading) heading.textContent = "Review Zennora for your business before going live.";
+      if (copy) copy.textContent = "We prepare an unlisted demonstration using public information from your website and relevant customer scenarios so you can see how Zennora would work before making any live website changes.";
+      if (benefits[0]) benefits[0].textContent = "✓ 3-day personalized demo";
+      if (benefits[1]) benefits[1].textContent = "✓ No setup fee";
+      if (benefits[2]) benefits[2].textContent = "✓ Review before deciding";
+      if (benefits[3]) benefits[3].textContent = "✓ Launch support included";
+      if (benefits[4]) benefits[4].textContent = "✓ No live website changes during the demo";
+    }
+  }
+
+  applyHomepageTrustUpdates();
+
   function replaceButton(selector, label) {
     const button = document.querySelector(selector);
     if (!button) return;
@@ -25,9 +69,6 @@
     demoCta.href = "#contact";
     demoCta.textContent = "Request a personalized demo for your business →";
   }
-
-  const firstLaunchBenefit = document.querySelector(".launch-benefits span");
-  if (firstLaunchBenefit) firstLaunchBenefit.textContent = "✓ 3-day personalized demo";
 
   // Turn the existing industry cards into dedicated solution links without
   // requiring a homepage-layout rebuild.
