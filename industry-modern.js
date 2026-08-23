@@ -9,7 +9,7 @@
 
   [
     "homepage-modern.css?v=1.0.1",
-    "industry-modern.css?v=1.2.0",
+    "industry-modern.css?v=1.3.0",
     "industry-visuals.css?v=1.1.0"
   ].forEach((href) => {
     const link = document.createElement("link");
@@ -140,6 +140,8 @@
     if (submit && !submit.disabled) submit.textContent = "Request My 3-Day Demo";
 
     const copyColumn = section.querySelector(".dental-booking-copy");
+    const email = copyColumn && copyColumn.querySelector(".dental-email-link");
+
     if (copyColumn && !copyColumn.querySelector(".demo-trust-compact")) {
       const panel = document.createElement("div");
       panel.className = "demo-trust-compact";
@@ -148,9 +150,15 @@
         <span>✓ Review before deciding</span>
         <span>✓ No setup fee</span>
         <span>✓ No live-site changes during the demo</span>`;
-      const email = copyColumn.querySelector(".dental-email-link");
       if (email) email.insertAdjacentElement("beforebegin", panel);
       else copyColumn.appendChild(panel);
+    }
+
+    const walkthrough = section.querySelector(".dental-secondary-demo");
+    if (copyColumn && walkthrough && !copyColumn.contains(walkthrough)) {
+      walkthrough.classList.add("secondary-demo-left");
+      if (email) email.insertAdjacentElement("beforebegin", walkthrough);
+      else copyColumn.appendChild(walkthrough);
     }
 
     section.querySelectorAll("[data-industry-request-button]").forEach((button) => {
