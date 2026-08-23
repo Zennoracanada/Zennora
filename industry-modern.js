@@ -7,7 +7,12 @@
 
   document.body.classList.add("zennora-modern");
 
-  ["homepage-modern.css?v=1.0.0", "industry-modern.css?v=1.0.0"].forEach((href) => {
+  [
+    "homepage-modern.css?v=1.0.1",
+    "industry-modern.css?v=1.1.0",
+    "industry-visuals.css?v=1.1.0",
+    "dedicated-page-image-fix.css?v=1.1.0"
+  ].forEach((href) => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
     link.href = href;
@@ -20,6 +25,18 @@
     plumbing: "Plumbing business",
     hvac: "HVAC business",
     automotive: "Auto service shop"
+  };
+
+  const cleanRoutes = {
+    "index.html": "/",
+    "dental.html": "/dental",
+    "physio.html": "/physio",
+    "plumbing.html": "/plumbing",
+    "hvac.html": "/hvac",
+    "automotive.html": "/automotive",
+    "privacy.html": "/privacy",
+    "security.html": "/security",
+    "terms.html": "/terms"
   };
 
   function enhanceHero() {
@@ -37,10 +54,16 @@
       <div class="product-browser-sitebar">
         <span class="product-browser-brand"><b>Z</b> ${labels[type] || "Your business"}</span>
         <span class="product-browser-nav"><span>Services</span><span>About</span><span>Contact</span></span>
+      </div>
+      <div class="industry-hero-art" aria-hidden="true">
+        <span class="industry-hero-art-label">${labels[type] || "Your business"} · website context</span>
       </div>`;
 
     card.parentNode.insertBefore(shell, card);
     shell.appendChild(card);
+
+    const tray = document.createElement("div");
+    tray.className = "hero-float-tray";
 
     const one = document.createElement("div");
     one.className = "hero-float-card one";
@@ -50,7 +73,8 @@
     two.className = "hero-float-card two";
     two.innerHTML = '<strong>✓</strong><span>Uses approved business information</span>';
 
-    heroVisual.append(one, two);
+    tray.append(one, two);
+    heroVisual.append(tray);
   }
 
   function addTrustRibbon() {
@@ -97,21 +121,48 @@
     pricing.insertAdjacentElement("beforebegin", section);
   }
 
-  function addDemoSafetyPanel() {
-    if (document.querySelector(".demo-safety-panel")) return;
+  function streamlineDemoSection() {
     const form = document.querySelector("[data-industry-demo-form]");
     if (!form) return;
 
     const section = form.closest("section");
-    const heading = section && section.querySelector("[data-industry-demo-heading], .section-head");
-    if (!section || !heading) return;
+    if (!section) return;
 
-    const panel = document.createElement("div");
-    panel.className = "demo-safety-panel";
-    panel.innerHTML = `
-      <div><h3>See a personalized version before you decide.</h3><p>Your demo is prepared privately first. Requesting it does not change your live website.</p></div>
-      <div class="demo-safety-list"><span>Personalized to your business</span><span>Review before deciding</span><span>No setup fee</span><span>No live-site changes during the demo</span></div>`;
-    heading.insertAdjacentElement("afterend", panel);
+    section.querySelectorAll(".demo-safety-panel").forEach((panel) => panel.remove());
+
+    const heading = section.querySelector("[data-industry-demo-heading]");
+    if (heading) {
+      const title = heading.querySelector("h2");
+      const copy = heading.querySelector("p");
+      if (title) title.textContent = "Request Your 3-Day Demo";
+      if (copy) copy.textContent = "Send us your website and we’ll prepare a private, personalized preview.";
+    }
+
+    const submit = form.querySelector('button[type="submit"]');
+    if (submit && !submit.disabled) submit.textContent = "Request My 3-Day Demo";
+
+    const copyColumn = section.querySelector(".dental-booking-copy");
+    if (copyColumn && !copyColumn.querySelector(".demo-trust-compact")) {
+      const panel = document.createElement("div");
+      panel.className = "demo-trust-compact";
+      panel.innerHTML = `
+        <span>✓ Personalized to your business</span>
+        <span>✓ Review before deciding</span>
+        <span>✓ No setup fee</span>
+        <span>✓ No live-site changes during the demo</span>`;
+      const email = copyColumn.querySelector(".dental-email-link");
+      if (email) email.insertAdjacentElement("beforebegin", panel);
+      else copyColumn.appendChild(panel);
+    }
+
+    section.querySelectorAll("[data-industry-request-button]").forEach((button) => {
+      if (button.getAttribute("aria-disabled") !== "true") button.textContent = "Request Your 3-Day Demo";
+    });
+  }
+
+  function removeRepeatedLaunchSection() {
+    const launch = document.querySelector(".launch-section");
+    if (launch) launch.remove();
   }
 
   function normalizeFooterIndustries() {
@@ -123,18 +174,38 @@
     if (!links) return;
 
     links.innerHTML = `
-      <a href="index.html">Home</a>
-      <a href="dental.html">Dental</a>
-      <a href="physio.html">Physio / Rehab</a>
-      <a href="plumbing.html">Plumbing</a>
-      <a href="hvac.html">HVAC</a>
-      <a href="automotive.html">Automotive</a>
-      <a href="privacy.html">Privacy</a>`;
+      <a href="/">Home</a>
+      <a href="/dental">Dental</a>
+      <a href="/physio">Physio / Rehab</a>
+      <a href="/plumbing">Plumbing</a>
+      <a href="/hvac">HVAC</a>
+      <a href="/automotive">Automotive</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/security">Security & Data</a>
+      <a href="/terms">Terms</a>`;
+  }
+
+  function normalizeInternalLinks() {
+    document.querySelectorAll("a[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (!href) return;
+      const [path, hash = ""] = href.split("#");
+      const clean = cleanRoutes[path];
+      if (!clean) return;
+      link.setAttribute("href", `${clean}${hash ? `#${hash}` : ""}`);
+    });
   }
 
   enhanceHero();
   addTrustRibbon();
   addTrustSection();
-  addDemoSafetyPanel();
+  streamlineDemoSection();
+  removeRepeatedLaunchSection();
   normalizeFooterIndustries();
+  normalizeInternalLinks();
+
+  const polishScript = document.createElement("script");
+  polishScript.src = "global-polish.js?v=1.0.0";
+  polishScript.async = true;
+  document.head.appendChild(polishScript);
 })();

@@ -1,5 +1,7 @@
 .zennora-modern:not([data-demo-type="general"]) .hero {
-  padding-top: 82px;
+  padding-top: 72px;
+  padding-bottom: 72px;
+  min-height: auto;
   background:
     radial-gradient(circle at 10% 18%,rgba(66,214,164,.10),transparent 24%),
     radial-gradient(circle at 86% 10%,rgba(118,87,255,.15),transparent 31%),
@@ -18,7 +20,12 @@
   mask-image: linear-gradient(to bottom,rgba(0,0,0,.55),transparent 84%);
 }
 
-/* Keep all dedicated industry heroes top-aligned like the homepage. */
+/* Dedicated industry pages use slightly smaller headlines and top alignment. */
+.zennora-modern:not([data-demo-type="general"]) .hero h1 {
+  font-size: clamp(3rem,5.25vw,5.1rem);
+  max-width: 680px;
+}
+
 .zennora-modern:not([data-demo-type="general"]) .hero-grid {
   position: relative;
   z-index: 1;
@@ -27,7 +34,7 @@
 }
 
 .zennora-modern:not([data-demo-type="general"]) .hero-content {
-  padding-top: 14px;
+  padding-top: 0;
 }
 
 .zennora-modern:not([data-demo-type="general"]) .hero-visual {
@@ -73,18 +80,9 @@
   align-items: center;
 }
 
-.industry-trust-copy .eyebrow {
-  color: #8ff2d0;
-}
-
-.industry-trust-copy h2 {
-  color: #fff;
-}
-
-.industry-trust-copy p {
-  margin-top: 17px;
-  color: #bcc9e3;
-}
+.industry-trust-copy .eyebrow { color: #8ff2d0; }
+.industry-trust-copy h2 { color: #fff; }
+.industry-trust-copy p { margin-top: 17px; color: #bcc9e3; }
 
 .industry-trust-list {
   display: grid;
@@ -136,6 +134,54 @@
   box-shadow: 0 10px 34px rgba(19,38,78,.045);
 }
 
+/* Final demo section: align the form with the left sales copy and avoid repeating reassurance copy. */
+.zennora-modern:not([data-demo-type="general"]) .dental-booking-section {
+  padding: 70px 0;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .dental-booking-grid {
+  align-items: start;
+  gap: 58px;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .dental-booking-copy {
+  padding-top: 12px;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .dental-demo-options,
+.zennora-modern:not([data-demo-type="general"]) .dental-scheduler-card {
+  align-self: start;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .scheduler-heading {
+  padding-bottom: 16px;
+}
+
+.demo-trust-compact {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 10px 16px;
+  max-width: 530px;
+  margin: 24px 0 26px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 18px;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(12px);
+}
+
+.demo-trust-compact span {
+  color: #e8efff;
+  font-size: .82rem;
+  line-height: 1.4;
+  font-weight: 700;
+}
+
+/* Defensive fallback: the repeated launch offer is removed by JS and hidden if JS is delayed. */
+.zennora-modern:not([data-demo-type="general"]) .launch-section {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .industry-trust-wrap {
     grid-template-columns: 1fr;
@@ -144,10 +190,19 @@
   .zennora-modern:not([data-demo-type="general"]) .hero-content {
     padding-top: 0;
   }
+
+  .zennora-modern:not([data-demo-type="general"]) .dental-booking-grid {
+    gap: 36px;
+  }
 }
 
 @media (max-width: 650px) {
-  .industry-trust-list {
+  .industry-trust-list,
+  .demo-trust-compact {
     grid-template-columns: 1fr;
+  }
+
+  .zennora-modern:not([data-demo-type="general"]) .hero h1 {
+    font-size: clamp(2.85rem,13vw,4rem);
   }
 }
