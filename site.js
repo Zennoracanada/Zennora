@@ -449,3 +449,10 @@ if (document.body.dataset.demoType === "general") {
   homepageDemoScript.async = false;
   document.body.appendChild(homepageDemoScript);
 }
+
+if (document.body.dataset.demoType && document.body.dataset.demoType !== "general") {
+  const industryModernScript = document.createElement("script");
+  industryModernScript.src = "industry-modern.js?v=1.0.0";
+  industryModernScript.async = true;
+  document.head.appendChild(industryModernScript);
+}

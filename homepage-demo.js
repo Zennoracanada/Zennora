@@ -238,4 +238,9 @@
     success.classList.add("visible");
     success.focus({ preventScroll: true });
   });
+
+  const modernScript = document.createElement("script");
+  modernScript.src = "homepage-modern.js?v=1.0.0";
+  modernScript.async = true;
+  document.head.appendChild(modernScript);
 })();
