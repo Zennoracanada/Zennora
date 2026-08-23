@@ -63,6 +63,16 @@
   z-index: 2;
 }
 
+/* The Explore footer stays compact even with all five industry links. */
+@media (min-width: 761px) {
+  .site-footer .footer-grid > div:nth-child(2) .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    column-gap: 24px;
+    row-gap: 9px;
+  }
+}
+
 @media (max-width: 1100px) {
   .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
     width: 210px;
