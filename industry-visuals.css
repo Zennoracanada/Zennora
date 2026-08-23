@@ -56,10 +56,73 @@
 .zennora-modern[data-demo-type="automotive"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-automotive.svg"); }
 
 .zennora-modern:not([data-demo-type="general"]) .product-browser-shell,
-.zennora-modern:not([data-demo-type="general"]) .hero-float-tray,
 .zennora-modern:not([data-demo-type="general"]) .demo-clarification {
   position: relative;
   z-index: 2;
+}
+
+/* Homepage: keep the two product-benefit badges in one clean row beneath the preview. */
+.zennora-modern[data-demo-type="general"] .hero-float-tray {
+  position: relative;
+  z-index: 3;
+  display: grid !important;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  width: min(520px, 100%);
+  margin: 14px auto 0;
+}
+
+.zennora-modern[data-demo-type="general"] .hero-float-tray .hero-float-card,
+.zennora-modern[data-demo-type="general"] .hero-float-tray .hero-float-card.one,
+.zennora-modern[data-demo-type="general"] .hero-float-tray .hero-float-card.two {
+  position: relative !important;
+  inset: auto !important;
+  left: auto !important;
+  right: auto !important;
+  top: auto !important;
+  bottom: auto !important;
+  align-self: stretch !important;
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 58px;
+  margin: 0 !important;
+  transform: none !important;
+  justify-content: flex-start;
+}
+
+/* Industry pages: move those same trust points to the left hero badge group. */
+.zennora-modern:not([data-demo-type="general"]) .hero-float-tray {
+  display: none !important;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .micro-trust::before,
+.zennora-modern:not([data-demo-type="general"]) .micro-trust::after {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 8px 11px;
+  border: 1px solid rgba(116,136,177,.16);
+  border-radius: 999px;
+  background: rgba(255,255,255,.75);
+  backdrop-filter: blur(12px);
+  color: #50617f;
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1.25;
+  white-space: normal;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .micro-trust::before {
+  content: "✓ Answers common questions 24/7";
+}
+
+.zennora-modern:not([data-demo-type="general"]) .micro-trust::after {
+  content: "✓ Uses approved business information";
+}
+
+.zennora-modern[data-demo-type="dental"] .micro-trust::after,
+.zennora-modern[data-demo-type="physio"] .micro-trust::after {
+  content: "✓ Uses approved clinic information";
 }
 
 /* The Explore footer stays compact even with all five industry links. */
@@ -76,5 +139,9 @@
   .zennora-modern:not([data-demo-type="general"]) .product-browser-shell .chat-card::before {
     height: 108px;
     margin: -18px -18px 16px;
+  }
+
+  .zennora-modern[data-demo-type="general"] .hero-float-tray {
+    grid-template-columns: 1fr;
   }
 }
