@@ -1,15 +1,8 @@
 /* Keep the two hero trust badges in a stable row below the product preview. */
-.hero-float-tray {
-  width: min(520px, 100%);
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 12px;
-}
-
-.hero-float-tray .hero-float-card {
-  position: static;
-  width: 100%;
+.zennora-modern .hero-float-card {
+  position: relative;
+  width: auto;
+  max-width: calc(50% - 6px);
   min-height: 48px;
   padding: 10px 12px;
   justify-content: flex-start;
@@ -17,22 +10,42 @@
   transform: none;
 }
 
-.hero-float-tray .hero-float-card.one,
-.hero-float-tray .hero-float-card.two {
-  inset: auto;
+.zennora-modern .hero-float-card.one {
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  align-self: flex-start;
+  margin-top: 12px;
 }
 
-.hero-float-tray .hero-float-card strong {
+.zennora-modern .hero-float-card.two {
+  left: auto;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  align-self: flex-end;
+  margin-top: -48px;
+}
+
+.zennora-modern .hero-float-card strong {
   flex: 0 0 auto;
 }
 
-.hero-float-tray .hero-float-card span {
+.zennora-modern .hero-float-card span {
   min-width: 0;
   line-height: 1.25;
 }
 
 @media (max-width: 650px) {
-  .hero-float-tray {
-    grid-template-columns: 1fr;
+  .zennora-modern .hero-float-card {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .zennora-modern .hero-float-card.one,
+  .zennora-modern .hero-float-card.two {
+    align-self: stretch;
+    margin-top: 10px;
   }
 }
