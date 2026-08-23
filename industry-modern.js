@@ -10,7 +10,7 @@
   [
     "homepage-modern.css?v=1.0.1",
     "industry-modern.css?v=1.3.0",
-    "industry-visuals.css?v=1.1.0"
+    "industry-visuals.css?v=1.2.0"
   ].forEach((href) => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
