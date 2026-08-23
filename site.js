@@ -96,6 +96,34 @@ document.querySelectorAll("[data-year]").forEach((element) => {
   element.textContent = String(new Date().getFullYear());
 });
 
+(function applyDentalTrustUpdates() {
+  if (document.body.dataset.demoType !== "dental") return;
+
+  const setupPanel = document.querySelector(".setup-fee-panel");
+  if (setupPanel) {
+    const label = setupPanel.querySelector(".setup-label");
+    const price = setupPanel.querySelector("strong");
+    const copy = setupPanel.querySelector("p");
+    if (label) label.textContent = "Setup and onboarding";
+    if (price) price.textContent = "No setup fee";
+    if (copy) copy.textContent = "Clinic knowledge-base setup, configuration, testing, booking-link setup, installation guidance and launch support are included.";
+  }
+
+  const launch = document.querySelector("#dental-launch");
+  if (launch) {
+    const eyebrow = launch.querySelector(".eyebrow.light");
+    const copy = launch.querySelector("p");
+    const benefits = launch.querySelectorAll(".launch-benefits span");
+    if (eyebrow) eyebrow.textContent = "Personalized 3-day demo";
+    if (copy) copy.textContent = "We prepare an unlisted demonstration using public clinic information and relevant patient scenarios so you can review Zennora before making any live website changes.";
+    if (benefits[0]) benefits[0].textContent = "✓ 3-day personalized demo";
+    if (benefits[1]) benefits[1].textContent = "✓ No setup fee";
+    if (benefits[2]) benefits[2].textContent = "✓ Review before deciding";
+    if (benefits[3]) benefits[3].textContent = "✓ Launch support included";
+    if (benefits[4]) benefits[4].textContent = "✓ No live website changes during the demo";
+  }
+})();
+
 function buildCalendlyUrl(planName = "general") {
   const selectedPlan = SITE_CONFIG.calendlyPlans[planName] || SITE_CONFIG.calendlyPlans.general;
   const separator = SITE_CONFIG.calendlyBaseUrl.includes("?") ? "&" : "?";
@@ -150,7 +178,7 @@ async function openCalendly(event) {
 
   if (typeof window.gtag === "function") {
     window.gtag("event", "calendly_click", {
-      page_type: document.body.dataset.demoType === "dental" ? "dental" : "homepage",
+      page_type: document.body.dataset.demoType || "homepage",
       calendly_plan: requestedPlan,
       button_text: trigger?.textContent?.trim() || "Calendly"
     });
