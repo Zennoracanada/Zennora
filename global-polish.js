@@ -13,6 +13,30 @@
     "terms.html": "/terms"
   };
 
+  const pathname = window.location.pathname || "/";
+  const filename = pathname.split("/").pop() || "";
+  const cleanPath = cleanRoutes[filename] || pathname;
+  const canonicalUrl = `https://zennora.ca${cleanPath === "/" ? "/" : cleanPath}`;
+  const socialImage = "https://zennora.ca/assets/og-zennora.svg";
+
+  function setMeta(selector, attribute, value) {
+    let element = document.head.querySelector(selector);
+    if (!element) {
+      element = document.createElement("meta");
+      if (selector.includes("property=")) element.setAttribute("property", selector.match(/property=['\"]([^'\"]+)/)?.[1] || "");
+      else element.setAttribute("name", selector.match(/name=['\"]([^'\"]+)/)?.[1] || "");
+      document.head.appendChild(element);
+    }
+    element.setAttribute(attribute, value);
+  }
+
+  const canonical = document.head.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = canonicalUrl;
+  setMeta('meta[property="og:url"]', "content", canonicalUrl);
+  setMeta('meta[property="og:image"]', "content", socialImage);
+  setMeta('meta[name="twitter:card"]', "content", "summary_large_image");
+  setMeta('meta[name="twitter:image"]', "content", socialImage);
+
   document.querySelectorAll("a[href]").forEach((link) => {
     const href = link.getAttribute("href");
     if (!href || href.startsWith("http") || href.startsWith("mailto:") || href.startsWith("tel:") || href.startsWith("#")) return;
