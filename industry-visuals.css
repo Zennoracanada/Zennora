@@ -12,18 +12,31 @@
 .modern-industry-card.hvac .modern-industry-visual { background-image: url("assets/industry-hvac.svg"); }
 .modern-industry-card.automotive .modern-industry-visual { background-image: url("assets/industry-automotive.svg"); }
 
+/* Keep every industry card in the same visual family. */
+.modern-industry-card {
+  border-radius: 24px;
+}
+
+.modern-industry-card .modern-industry-visual {
+  height: 175px;
+}
+
 .modern-industry-card .modern-industry-icon {
   opacity: 0;
   transform: scale(.9);
 }
 
 .modern-industry-card .modern-industry-visual::after {
-  background: linear-gradient(180deg, transparent 45%, rgba(7,21,47,.08));
+  background: linear-gradient(180deg, transparent 48%, rgba(7,21,47,.055));
   border: 0;
   border-radius: 0;
   inset: 0;
   width: auto;
   height: auto;
+}
+
+.modern-industry-card:hover .modern-industry-visual {
+  filter: saturate(1.03);
 }
 
 /* Dedicated solution pages reuse the same artwork in the live product preview. */
@@ -123,6 +136,37 @@
 .zennora-modern[data-demo-type="dental"] .micro-trust::after,
 .zennora-modern[data-demo-type="physio"] .micro-trust::after {
   content: "✓ Uses approved clinic information";
+}
+
+/* CTA hierarchy: demo requests remain the only strong gradient action.
+   Plan discussions, walkthroughs and footer actions are intentionally quieter. */
+.zennora-modern .pricing-card .button,
+.zennora-modern .pricing-card .button.secondary,
+.zennora-modern .dental-secondary-demo .button,
+.zennora-modern .dental-secondary-demo .button.secondary {
+  background: #fff !important;
+  color: #17305f !important;
+  border: 1px solid #d9e2f2 !important;
+  box-shadow: none !important;
+}
+
+.zennora-modern .pricing-card .button:hover,
+.zennora-modern .dental-secondary-demo .button:hover {
+  border-color: #aabcf5 !important;
+  background: #f8faff !important;
+  box-shadow: 0 10px 24px rgba(20,38,75,.08) !important;
+}
+
+.zennora-modern .site-footer .footer-button {
+  background: transparent !important;
+  color: #f7f9ff !important;
+  border: 1px solid rgba(255,255,255,.28) !important;
+  box-shadow: none !important;
+}
+
+.zennora-modern .site-footer .footer-button:hover {
+  background: rgba(255,255,255,.08) !important;
+  border-color: rgba(255,255,255,.48) !important;
 }
 
 /* The Explore footer stays compact even with all five industry links. */
