@@ -114,8 +114,27 @@
     heading.insertAdjacentElement("afterend", panel);
   }
 
+  function normalizeFooterIndustries() {
+    const footer = document.querySelector(".site-footer");
+    if (!footer) return;
+    const columns = footer.querySelectorAll(".footer-grid > div");
+    const exploreColumn = [...columns].find((column) => column.querySelector(".footer-heading")?.textContent.trim().toLowerCase() === "explore");
+    const links = exploreColumn && exploreColumn.querySelector(".footer-links");
+    if (!links) return;
+
+    links.innerHTML = `
+      <a href="index.html">Home</a>
+      <a href="dental.html">Dental</a>
+      <a href="physio.html">Physio / Rehab</a>
+      <a href="plumbing.html">Plumbing</a>
+      <a href="hvac.html">HVAC</a>
+      <a href="automotive.html">Automotive</a>
+      <a href="privacy.html">Privacy</a>`;
+  }
+
   enhanceHero();
   addTrustRibbon();
   addTrustSection();
   addDemoSafetyPanel();
+  normalizeFooterIndustries();
 })();
