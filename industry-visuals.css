@@ -26,35 +26,34 @@
   height: auto;
 }
 
-/* Dedicated solution pages reuse the same artwork behind the live product preview. */
+/* Dedicated solution pages reuse the same artwork in the live product preview. */
 .zennora-modern:not([data-demo-type="general"]) .hero-visual {
   isolation: isolate;
 }
 
+/* Remove the old partially-hidden floating artwork. */
 .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+  display: none !important;
+}
+
+/* Put a full-width industry scene directly inside the browser mockup so it is unmistakably visible. */
+.zennora-modern:not([data-demo-type="general"]) .product-browser-shell .chat-card::before {
   content: "";
-  position: absolute;
-  z-index: 1;
-  width: 255px;
-  height: 166px;
-  right: -26px;
-  top: 28px;
-  border: 7px solid rgba(255,255,255,.92);
-  border-radius: 24px;
+  display: block;
+  height: 138px;
+  margin: -22px -22px 18px;
+  border-bottom: 1px solid #e5ebf5;
   background-color: #f5f8ff;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  box-shadow: 0 20px 55px rgba(20,38,75,.17);
-  transform: rotate(3deg);
-  pointer-events: none;
 }
 
-.zennora-modern[data-demo-type="dental"] .hero-visual::after { background-image: url("assets/industry-dental.svg"); }
-.zennora-modern[data-demo-type="physio"] .hero-visual::after { background-image: url("assets/industry-physio.svg"); }
-.zennora-modern[data-demo-type="plumbing"] .hero-visual::after { background-image: url("assets/industry-plumbing.svg"); }
-.zennora-modern[data-demo-type="hvac"] .hero-visual::after { background-image: url("assets/industry-hvac.svg"); }
-.zennora-modern[data-demo-type="automotive"] .hero-visual::after { background-image: url("assets/industry-automotive.svg"); }
+.zennora-modern[data-demo-type="dental"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-dental.svg"); }
+.zennora-modern[data-demo-type="physio"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-physio.svg"); }
+.zennora-modern[data-demo-type="plumbing"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-plumbing.svg"); }
+.zennora-modern[data-demo-type="hvac"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-hvac.svg"); }
+.zennora-modern[data-demo-type="automotive"] .product-browser-shell .chat-card::before { background-image: url("assets/industry-automotive.svg"); }
 
 .zennora-modern:not([data-demo-type="general"]) .product-browser-shell,
 .zennora-modern:not([data-demo-type="general"]) .hero-float-tray,
@@ -73,33 +72,9 @@
   }
 }
 
-@media (max-width: 1100px) {
-  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
-    width: 210px;
-    height: 137px;
-    right: -5px;
-    top: 8px;
-    opacity: .9;
-  }
-}
-
-@media (max-width: 900px) {
-  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
-    width: 190px;
-    height: 124px;
-    right: 4%;
-    top: -14px;
-  }
-}
-
 @media (max-width: 650px) {
-  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
-    width: 145px;
-    height: 95px;
-    right: 2px;
-    top: -4px;
-    border-width: 5px;
-    border-radius: 18px;
-    opacity: .88;
+  .zennora-modern:not([data-demo-type="general"]) .product-browser-shell .chat-card::before {
+    height: 108px;
+    margin: -18px -18px 16px;
   }
 }
