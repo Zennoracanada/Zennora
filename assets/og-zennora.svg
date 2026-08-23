@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="t d">
+  <title id="t">Zennora AI Receptionists</title><desc id="d">Zennora social sharing graphic for AI receptionists for service businesses.</desc>
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7fbff"/><stop offset="1" stop-color="#ebe8ff"/></linearGradient><linearGradient id="accent" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#2457f5"/><stop offset="1" stop-color="#7657ff"/></linearGradient></defs>
+  <rect width="1200" height="630" fill="url(#bg)"/><circle cx="70" cy="420" r="165" fill="#d8faef"/><circle cx="1110" cy="80" r="200" fill="#e0dbff"/>
+  <rect x="90" y="76" width="64" height="64" rx="14" fill="#07152f"/><path d="M108 92h30l-28 30h30" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="178" y="128" font-family="Inter,Arial,sans-serif" font-size="54" font-weight="800" fill="#07152f">Zennora</text>
+  <rect x="90" y="178" width="455" height="54" rx="27" fill="#fff" stroke="#cfdaef" stroke-width="2"/><text x="116" y="212" font-family="Inter,Arial,sans-serif" font-size="22" font-weight="800" letter-spacing="1" fill="#2457f5">AI RECEPTIONISTS FOR SERVICE BUSINESSES</text>
+  <text x="90" y="330" font-family="Inter,Arial,sans-serif" font-size="68" font-weight="800" fill="#07152f">Turn website questions into</text>
+  <text x="90" y="420" font-family="Inter,Arial,sans-serif" font-size="68" font-weight="800" fill="url(#accent)">bookings, calls &amp; quote requests.</text>
+  <text x="90" y="520" font-family="Inter,Arial,sans-serif" font-size="31" fill="#526484">Built &amp; supported in Canada  •  zennora.ca</text>
+</svg>
