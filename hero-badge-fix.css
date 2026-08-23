@@ -1,3 +1,5 @@
+@import url("industry-visuals.css?v=1.0.0");
+
 /* Keep the two hero trust badges in a stable row below the product preview. */
 .zennora-modern .hero-float-card {
   position: relative;

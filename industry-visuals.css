@@ -1,0 +1,105 @@
+/* Shared industry artwork: decorative only; no form or interaction rules. */
+
+.modern-industry-card .modern-industry-visual {
+  background-color: #f5f8ff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.modern-industry-card.dental .modern-industry-visual { background-image: url("assets/industry-dental.svg"); }
+.modern-industry-card.physio .modern-industry-visual { background-image: url("assets/industry-physio.svg"); }
+.modern-industry-card.plumbing .modern-industry-visual { background-image: url("assets/industry-plumbing.svg"); }
+.modern-industry-card.hvac .modern-industry-visual { background-image: url("assets/industry-hvac.svg"); }
+.modern-industry-card.automotive .modern-industry-visual { background-image: url("assets/industry-automotive.svg"); }
+
+.modern-industry-card .modern-industry-icon {
+  opacity: 0;
+  transform: scale(.9);
+}
+
+.modern-industry-card .modern-industry-visual::after {
+  background: linear-gradient(180deg, transparent 45%, rgba(7,21,47,.08));
+  border: 0;
+  border-radius: 0;
+  inset: 0;
+  width: auto;
+  height: auto;
+}
+
+/* Dedicated solution pages reuse the same artwork behind the live product preview. */
+.zennora-modern:not([data-demo-type="general"]) .hero-visual {
+  isolation: isolate;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 255px;
+  height: 166px;
+  right: -26px;
+  top: 28px;
+  border: 7px solid rgba(255,255,255,.92);
+  border-radius: 24px;
+  background-color: #f5f8ff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  box-shadow: 0 20px 55px rgba(20,38,75,.17);
+  transform: rotate(3deg);
+  pointer-events: none;
+}
+
+.zennora-modern[data-demo-type="dental"] .hero-visual::after { background-image: url("assets/industry-dental.svg"); }
+.zennora-modern[data-demo-type="physio"] .hero-visual::after { background-image: url("assets/industry-physio.svg"); }
+.zennora-modern[data-demo-type="plumbing"] .hero-visual::after { background-image: url("assets/industry-plumbing.svg"); }
+.zennora-modern[data-demo-type="hvac"] .hero-visual::after { background-image: url("assets/industry-hvac.svg"); }
+.zennora-modern[data-demo-type="automotive"] .hero-visual::after { background-image: url("assets/industry-automotive.svg"); }
+
+.zennora-modern:not([data-demo-type="general"]) .product-browser-shell,
+.zennora-modern:not([data-demo-type="general"]) .hero-float-tray,
+.zennora-modern:not([data-demo-type="general"]) .demo-clarification {
+  position: relative;
+  z-index: 2;
+}
+
+/* The Explore footer stays compact even with all five industry links. */
+@media (min-width: 761px) {
+  .site-footer .footer-grid > div:nth-child(2) .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(120px, 1fr));
+    column-gap: 24px;
+    row-gap: 9px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+    width: 210px;
+    height: 137px;
+    right: -5px;
+    top: 8px;
+    opacity: .9;
+  }
+}
+
+@media (max-width: 900px) {
+  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+    width: 190px;
+    height: 124px;
+    right: 4%;
+    top: -14px;
+  }
+}
+
+@media (max-width: 650px) {
+  .zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+    width: 145px;
+    height: 95px;
+    right: 2px;
+    top: -4px;
+    border-width: 5px;
+    border-radius: 18px;
+    opacity: .88;
+  }
+}
