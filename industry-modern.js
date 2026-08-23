@@ -9,9 +9,8 @@
 
   [
     "homepage-modern.css?v=1.0.1",
-    "industry-modern.css?v=1.1.0",
-    "industry-visuals.css?v=1.1.0",
-    "dedicated-page-image-fix.css?v=1.1.0"
+    "industry-modern.css?v=1.2.0",
+    "industry-visuals.css?v=1.1.0"
   ].forEach((href) => {
     const link = document.createElement("link");
     link.rel = "stylesheet";
@@ -54,9 +53,6 @@
       <div class="product-browser-sitebar">
         <span class="product-browser-brand"><b>Z</b> ${labels[type] || "Your business"}</span>
         <span class="product-browser-nav"><span>Services</span><span>About</span><span>Contact</span></span>
-      </div>
-      <div class="industry-hero-art" aria-hidden="true">
-        <span class="industry-hero-art-label">${labels[type] || "Your business"} · website context</span>
       </div>`;
 
     card.parentNode.insertBefore(shell, card);
@@ -74,7 +70,9 @@
     two.innerHTML = '<strong>✓</strong><span>Uses approved business information</span>';
 
     tray.append(one, two);
-    heroVisual.append(tray);
+    const clarification = heroVisual.querySelector(".demo-clarification");
+    if (clarification) heroVisual.insertBefore(tray, clarification);
+    else heroVisual.append(tray);
   }
 
   function addTrustRibbon() {
