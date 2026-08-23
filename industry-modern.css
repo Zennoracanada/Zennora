@@ -18,10 +18,20 @@
   mask-image: linear-gradient(to bottom,rgba(0,0,0,.55),transparent 84%);
 }
 
+/* Keep all dedicated industry heroes top-aligned like the homepage. */
 .zennora-modern:not([data-demo-type="general"]) .hero-grid {
   position: relative;
   z-index: 1;
   gap: 54px;
+  align-items: start;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .hero-content {
+  padding-top: 14px;
+}
+
+.zennora-modern:not([data-demo-type="general"]) .hero-visual {
+  align-self: start;
 }
 
 .zennora-modern:not([data-demo-type="general"]) .micro-trust {
@@ -129,6 +139,10 @@
 @media (max-width: 900px) {
   .industry-trust-wrap {
     grid-template-columns: 1fr;
+  }
+
+  .zennora-modern:not([data-demo-type="general"]) .hero-content {
+    padding-top: 0;
   }
 }
 
