@@ -1,0 +1,59 @@
+/* Dedicated industry hero artwork is rendered inside the product preview so it is clearly visible. */
+.zennora-modern:not([data-demo-type="general"]) .hero-visual::after {
+  display: none !important;
+}
+
+.industry-hero-art {
+  position: relative;
+  height: 142px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-bottom: 1px solid #e7edf7;
+  background-color: #f4f7ff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.industry-hero-art::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(7,21,47,.18), transparent 42%, rgba(255,255,255,.05));
+  pointer-events: none;
+}
+
+.industry-hero-art-label {
+  position: absolute;
+  z-index: 2;
+  left: 16px;
+  bottom: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: 999px;
+  background: rgba(255,255,255,.88);
+  box-shadow: 0 8px 24px rgba(20,38,75,.10);
+  backdrop-filter: blur(12px);
+  color: #132746;
+  font-size: .7rem;
+  font-weight: 850;
+}
+
+.zennora-modern[data-demo-type="dental"] .industry-hero-art { background-image: url("assets/industry-dental.svg"); }
+.zennora-modern[data-demo-type="physio"] .industry-hero-art { background-image: url("assets/industry-physio.svg"); }
+.zennora-modern[data-demo-type="plumbing"] .industry-hero-art { background-image: url("assets/industry-plumbing.svg"); }
+.zennora-modern[data-demo-type="hvac"] .industry-hero-art { background-image: url("assets/industry-hvac.svg"); }
+.zennora-modern[data-demo-type="automotive"] .industry-hero-art { background-image: url("assets/industry-automotive.svg"); }
+
+@media (max-width: 650px) {
+  .industry-hero-art {
+    height: 112px;
+  }
+  .industry-hero-art-label {
+    left: 12px;
+    bottom: 10px;
+  }
+}
