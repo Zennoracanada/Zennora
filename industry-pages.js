@@ -49,6 +49,39 @@
     ]
   };
 
+  function applyIndustryTrustUpdates() {
+    const isClinic = type === "physio";
+    const setupPanel = document.querySelector(".setup-fee-panel");
+    if (setupPanel) {
+      const label = setupPanel.querySelector(".setup-label");
+      const price = setupPanel.querySelector("strong");
+      const copy = setupPanel.querySelector("p");
+      if (label) label.textContent = "Setup and onboarding";
+      if (price) price.textContent = "No setup fee";
+      if (copy) copy.textContent = isClinic
+        ? "Knowledge-base setup, workflow configuration, testing, booking/contact setup, installation guidance and launch support are included."
+        : "Knowledge-base setup, workflow configuration, testing, booking/contact setup, installation guidance and launch support are included.";
+    }
+
+    const launch = document.querySelector(".launch-section");
+    if (launch) {
+      const eyebrow = launch.querySelector(".eyebrow.light");
+      const copy = launch.querySelector("p");
+      const benefits = launch.querySelectorAll(".launch-benefits span");
+      if (eyebrow) eyebrow.textContent = "Personalized 3-day demo";
+      if (copy) copy.textContent = isClinic
+        ? "We prepare an unlisted demonstration using public clinic information and relevant patient scenarios so you can review Zennora before making any live website changes."
+        : "We prepare an unlisted demonstration using public business information and relevant customer scenarios so you can review Zennora before making any live website changes.";
+      if (benefits[0]) benefits[0].textContent = "✓ 3-day personalized demo";
+      if (benefits[1]) benefits[1].textContent = "✓ No setup fee";
+      if (benefits[2]) benefits[2].textContent = "✓ Review before deciding";
+      if (benefits[3]) benefits[3].textContent = "✓ Launch support included";
+      if (benefits[4]) benefits[4].textContent = "✓ No live website changes during the demo";
+    }
+  }
+
+  applyIndustryTrustUpdates();
+
   function initializeIndustryDemo(demo) {
     const scenarios = scenariosByType[type];
     if (!scenarios || !scenarios.length) return;
