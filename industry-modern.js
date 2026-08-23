@@ -203,4 +203,9 @@
   removeRepeatedLaunchSection();
   normalizeFooterIndustries();
   normalizeInternalLinks();
+
+  const polishScript = document.createElement("script");
+  polishScript.src = "global-polish.js?v=1.0.0";
+  polishScript.async = true;
+  document.head.appendChild(polishScript);
 })();
