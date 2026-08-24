@@ -138,6 +138,7 @@ function buildCalendlyUrl(planName = "general") {
 }
 
 let calendlyLoadingPromise = null;
+let activeCalendlyPlan = "general";
 
 function loadCalendly() {
   if (window.Calendly) return Promise.resolve(window.Calendly);
@@ -175,6 +176,7 @@ async function openCalendly(event) {
   const trigger = event.currentTarget;
   const requestedPlan = trigger?.dataset?.calendlyPlan || "general";
   const calendlyUrl = buildCalendlyUrl(requestedPlan);
+  activeCalendlyPlan = requestedPlan;
 
   if (typeof window.gtag === "function") {
     window.gtag("event", "calendly_click", {
@@ -199,6 +201,18 @@ async function openCalendly(event) {
 
 document.querySelectorAll(".calendly-trigger").forEach((button) => {
   button.addEventListener("click", openCalendly);
+});
+
+window.addEventListener("message", (event) => {
+  if (event.origin !== "https://calendly.com") return;
+  if (event.data?.event !== "calendly.event_scheduled") return;
+  if (typeof window.gtag !== "function") return;
+
+  window.gtag("event", "book_demo", {
+    page_type: document.body.dataset.demoType || "homepage",
+    calendly_plan: activeCalendlyPlan,
+    booking_provider: "calendly"
+  });
 });
 
 const dentalDemoForm = document.querySelector("#dental-demo-request-form");
